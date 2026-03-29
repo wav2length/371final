@@ -1,4 +1,28 @@
-# 371final
+# The Dating App That Leads With Compatibility
+ 
+> *For singles burned out on appearance-first dating apps — the only platform that matches on shared values and uses mutual opt-in to ensure only genuine interest moves connections forward.*
+ 
+---
+ 
+## Overview
+ 
+Most dating apps lead with a photo and a swipe. MatchMaker leads with who you actually are.
+ 
+While Tinder, Bumble, and Hinge optimize for match volume, and eHarmony targets compatibility but delivers a slow, outdated experience, MatchMaker is a complete redesign of how dating apps work. Our proprietary algorithm matches users based on shared values, interests, and communication style. Every match comes with algorithmically generated conversation starters, and a mutual opt-in model ensures connections only persist when both people choose to engage.
+ 
+This restores confidence for users who feel overlooked by appearance-first platforms, provides real-time momentum for users tired of going nowhere, and delivers a dignified, compatibility-centered experience that mainstream apps have failed to offer.
+ 
+---
+ 
+## Features
+ 
+- **Compatibility-First Matching** — Matched on values, interests, and communication style — not looks
+- **Profile Snapshots** — Brief, curated profile views that orient users around what they share
+- **AI-Generated Conversation Starters** — Algorithmically tailored to each specific match
+- **Mutual Opt-In Continuation** — A connection persists only if both users choose to engage, filtering for genuine interest
+- **Secure Account Management** — Email/password auth with encrypted profile and conversation data
+ 
+---
 
 ## About the Dataset
 ### Source
