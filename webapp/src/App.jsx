@@ -14,6 +14,26 @@ function App() {
       // expected to be more, socket.io sends multiple pings during testing
       setPong((pong) => pong + 1)
     })
+
+    socket.on('enter-matchmaking-success', () => {
+      return;
+    });
+    socket.on('enter-matchmaking-failure', () => {
+      return;
+    });
+    socket.on('matchmaking-progress', update => {
+      return;
+    });
+
+    socket.on('enter-chat', partner => {
+      return;
+    });
+    socket.on('receive-chat', message => {
+      return;
+    });
+    socket.on('partner-leave-chat', () => {
+      return;
+    });
   })
 
   return (

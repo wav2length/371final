@@ -35,7 +35,23 @@ io.on('connection', socket => {
     console.log(`User ${socket.id} connected`);
 
     socket.on('ping', () => {
-        socket.emit('pong')
+        socket.emit('pong');
+    });
+
+    socket.on('store-survey-results', results => {
+        return;
+    });
+
+    socket.on('enter-matchmaking', () => {
+        return;
+    });
+
+    socket.on('send-message', message => {
+        return;
+    });
+
+    socket.on('leave-chat', () => {
+        return;
     });
 
     socket.on('disconnect', () => {
