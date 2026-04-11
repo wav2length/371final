@@ -1,4 +1,4 @@
-# The Dating App That Leads With Compatibility
+# Wavelength: The Dating App That Leads With Compatibility
  
 > *For singles burned out on appearance-first dating apps — the only platform that matches on shared values and uses mutual opt-in to ensure only genuine interest moves connections forward.*
  
@@ -6,9 +6,9 @@
  
 ## Overview
  
-Most dating apps lead with a photo and a swipe. MatchMaker leads with who you actually are.
+Most dating apps lead with a photo and a swipe. Wavelength leads with who you actually are.
  
-While Tinder, Bumble, and Hinge optimize for match volume, and eHarmony targets compatibility but delivers a slow, outdated experience, MatchMaker is a complete redesign of how dating apps work. Our proprietary algorithm matches users based on shared values, interests, and communication style. Every match comes with algorithmically generated conversation starters, and a mutual opt-in model ensures connections only persist when both people choose to engage.
+While Tinder, Bumble, and Hinge optimize for match volume, and eHarmony targets compatibility but delivers a slow, outdated experience, Wavelength is a complete redesign of how dating apps work. Our proprietary algorithm matches users based on shared values, interests, and communication style. Every match comes with algorithmically generated conversation starters, and a mutual opt-in model ensures connections only persist when both people choose to engage.
  
 This restores confidence for users who feel overlooked by appearance-first platforms, provides real-time momentum for users tired of going nowhere, and delivers a dignified, compatibility-centered experience that mainstream apps have failed to offer.
  
