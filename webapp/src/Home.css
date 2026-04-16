@@ -1,0 +1,44 @@
+body {
+  background-color: #0B4F6C; /* solid color */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#home-page {
+  width: 100%;
+  text-align: center;
+}
+
+#large-logo {
+  padding-top: 250px;
+}
+
+#subtitle {
+  font-size: 40px;
+  color: #C2DFE3;
+  padding-top: 20px;
+  font: cursive;
+}
+
+#waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+#enter-button {
+  margin-top: 100px;
+  height: 122px;
+  width: 410px;
+  font-size: 35px;
+  font: cursive;
+  color: #C2DFE3;
+  background-color: #A63446;
+  border: 2px solid #A63446;
+  border-radius: 25px;
+  cursor: pointer;
+}
