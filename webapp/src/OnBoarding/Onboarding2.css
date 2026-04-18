@@ -1,0 +1,102 @@
+body, #root {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; 
+
+}
+
+#main-area {
+  height: 600px;
+  width: 1000px;
+  background-color: #C2DFE3;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  border-radius: 25px;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+h1#Heading {
+  font-size: 48px;
+  color: #A63446;
+  font-family: "Bree Serif", serif;
+  padding-top: 70px;
+  font-weight: 400;
+}
+
+#subheading-board2 {
+  font-size: 24px;
+  color: #A63446;
+  font-family: "Bree Serif", serif;
+  font-weight: 100;
+  padding-top: 20px;
+  padding-left: 310px;
+  align-self: flex-start;
+  margin-top: 100px;
+}
+
+#options-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+#unclicked-option{
+    height: 75px;
+    width: 250px;
+    font-size: 24px;
+    font-family: "Bree Serif", serif;
+    padding-left: 10px;
+    color: #A63446;
+    background-color: #F4A5AE;
+    border: 2px solid #A63446;
+        border-radius: 15px;
+        margin-top: 20px;
+        cursor: pointer;
+}
+
+#clicked-option{
+    height: 75px;
+    width: 250px;
+    font-size: 24px;
+    font-family: "Bree Serif", serif;
+    padding-left: 10px;
+    color: #C2DFE3;
+    background-color: #A63446;
+    border: 2px solid #A63446;
+        border-radius: 15px;
+        margin-top: 20px;
+        cursor: pointer;
+}
+
+#next-button {
+  height: 75px;
+  width: 350px;
+  font-size: 35px;
+  color: #C2DFE3;
+  background-color: #A63446;
+  border: 2px solid #A63446;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-bottom: 100px;
+}
+
+#progress-container {
+  width: 900px;
+  height: 30px;
+  background-color: #C2DFE3;
+  margin-top: 70px;
+  border-radius: 50px;
+  overflow: visible; 
+}
+
+#progress-bar {
+  width: 40%; /* change this to control progress */
+  height: 100%;
+  background: linear-gradient(to right, #C2DFE3, #179EB1);
+  border-radius: 50px;
+}

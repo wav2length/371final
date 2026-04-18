@@ -3,8 +3,12 @@ import largeLogo from './Assets/large-logo.png'
 import waves from './Assets/waves.png'
 import './Home.css'
 import { socket } from './socket.js'
+import { useNavigate } from 'react-router-dom'
+
 
 function Home() {
+  const navigate = useNavigate()
+
   const [username, setUsername] = useState('');
 
   const [newProgress, setNewProgress] = useState({
@@ -75,11 +79,13 @@ function Home() {
 
   return (
     <>
+      {/* Design for home page */}
       <div id="home-page">
         <img id="large-logo" src={largeLogo} alt="Large Logo" />
-        <p id='subtitle'>the dating app that </p>
-        <p id='subtitle'>understands YOU first.</p>
-        <button id='enter-button' onClick={() => socket.emit('enter-matchmaking')}>find someone on your wavelength today!</button>
+        <p id='subtitle' className='nova-oval-regular'>the dating app that </p>
+        <p id='subtitle' className='nova-oval-regular'>understands YOU first.</p>
+        <button id='enter-button' className='bree-serif-regular' onClick={() => {socket.emit('enter-matchmaking') 
+        navigate('/Onboarding1')}}>find someone on your wavelength today!</button>
         <img id="waves" src={waves} alt="Waves" />
       </div>
     </>
