@@ -1,9 +1,9 @@
 import { use, useEffect, useState } from 'react'
-import './Onboarding2.css'
-import { socket } from '../socket.js'
 import { useNavigate } from 'react-router-dom'
+import { socket } from './socket.js'
+import './Survey1.css'
 
-function Onboarding2() {
+function Survey1() {
   const [ping, setPing] = useState(0)
   const [pong, setPong] = useState(0)
   const navigate = useNavigate()
@@ -40,30 +40,34 @@ function Onboarding2() {
   return (
     <>
     <div id="progress-container">
-        <div id="progress-bar-board2"></div>
+        <div id="progress-bar-survey1"></div>
     </div>
       <div id="main-area">
-        <h1 id="Heading-board2">Tell Us About Yourself</h1>
-        <h2 id="subheading-board2">Do you have a gender preference?</h2>
+        <h1 id="Heading-survey1">How interested are you in:</h1>
+        <h1 id="Heading-survey1">playing sports</h1>
         <div id="options-container">
-             <button id={selected === 'female' ? 'clicked-option' : 'unclicked-option'}
-                onClick={() => setSelected('female')}>
-                Yes, female
-            </button>
-
-            <button id={selected === 'male' ? 'clicked-option' : 'unclicked-option'}
-                onClick={() => setSelected('male')}>
-                Yes, male
-            </button>
-            <button id={selected === 'no-preference' ? 'clicked-option' : 'unclicked-option'}
-                onClick={() => setSelected('no-preference')}>
-                No preference
-            </button>
+            <p id="subheading-survey1">Least</p>
+            <div id="stars-container">
+                {[1, 2, 3, 4, 5].map((num) => (
+                    <button
+                    key={num}
+                    className={selected === num ? 'star selected' : 'star'}
+                    onClick={() => setSelected(num)}
+                    >
+                    {num}
+                    </button>
+                ))}
+                
+            </div>
+            <p id="subheading-survey1">Most</p>
         </div>
+        
       </div>
-      <button id="next-button" className='bree-serif-regular' onClick={() => navigate('/onboarding3') }>Next Question</button>
+      <button id="next-button" className='bree-serif-regular' onClick={() => navigate('/career')}>
+        Next Question
+      </button>
     </>
   )
 }
 
-export default Onboarding2
+export default Survey1

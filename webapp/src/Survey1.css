@@ -17,22 +17,22 @@ body, #root {
   border-radius: 25px;
   margin: auto;
   box-sizing: border-box;
+  padding-top: 90px;
 }
 
-h1#Heading-board3 {
+h1#Heading-survey1 {
   font-size: 48px;
   color: #A63446;
   font-family: "Bree Serif", serif;
   font-weight: 400;
 }
 
-#subheading-board3 {
+#subheading-survey1 {
     font-size: 24px;
     color: #A63446;
     font-family: "Bree Serif", serif;
     font-weight: 100;
-    padding-top: 20px;
-    padding-left: 310px;
+    padding-top: 70px;
     align-self: flex-start;
     margin-top: 30px;
 }
@@ -40,8 +40,6 @@ h1#Heading-board3 {
 #options-container {
     display: flex;
     flex-direction: row;
-    gap: 20px;
-    margin-top: 20px;
 }
 
 #input-num {
@@ -56,23 +54,6 @@ h1#Heading-board3 {
   background-color: #F4A5AE;
   border: 2px solid #A63446;
     border-radius: 15px;
-}
-
-#min {
-    font-size: 16px;
-    color: #A63446;
-    font-family: "Bree Serif", serif;
-    font-weight: 400;
-    align-self: flex-start;
-}
-
-#max {
-    font-size: 16px;
-    color: #A63446;
-    font-family: "Bree Serif", serif;
-    font-weight: 400;
-    align-self: flex-start;
-    margin-left: 70px;
 }
 
 #unclicked-option{
@@ -110,9 +91,32 @@ h1#Heading-board3 {
   overflow: visible; 
 }
 
-#progress-bar-board3 {
-  width: 48%; /* change this to control progress */
+#progress-bar-survey1 {
+  width: 64%; /* change this to control progress */
   height: 100%;
   background: linear-gradient(to right, #C2DFE3, #179EB1);
   border-radius: 50px;
+}
+
+#stars-container {
+  display: flex;
+  gap: 60px;
+  margin-top: 80px;
+}
+
+.star {
+  width: 80px;
+  height: 80px;
+  background-color: #179EB1;
+  color: #A63446;
+  font-size: 24px;
+  font-family: "Bree Serif", serif;
+  border: none;
+  cursor: pointer;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.star.selected {
+  background-color: #A63446;
+  color: #C2DFE3;
 }

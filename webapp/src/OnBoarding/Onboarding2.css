@@ -19,11 +19,10 @@ body, #root {
   box-sizing: border-box;
 }
 
-h1#Heading {
+h1#Heading-board2 {
   font-size: 48px;
   color: #A63446;
   font-family: "Bree Serif", serif;
-  padding-top: 70px;
   font-weight: 400;
 }
 
@@ -32,7 +31,6 @@ h1#Heading {
   color: #A63446;
   font-family: "Bree Serif", serif;
   font-weight: 100;
-  padding-top: 20px;
   padding-left: 310px;
   align-self: flex-start;
   margin-top: 100px;
@@ -94,8 +92,8 @@ h1#Heading {
   overflow: visible; 
 }
 
-#progress-bar {
-  width: 40%; /* change this to control progress */
+#progress-bar-board2 {
+  width: 32%; /* change this to control progress */
   height: 100%;
   background: linear-gradient(to right, #C2DFE3, #179EB1);
   border-radius: 50px;

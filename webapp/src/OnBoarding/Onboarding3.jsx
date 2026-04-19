@@ -44,10 +44,10 @@ function Onboarding3() {
   return (
     <>
     <div id="progress-container">
-        <div id="progress-bar"></div>
+        <div id="progress-bar-board3"></div>
     </div>
       <div id="main-area">
-        <h1 id="Heading">Tell Us About Yourself</h1>
+        <h1 id="Heading-board3">Tell Us About Yourself</h1>
         <h2 id="subheading-board3">Do you have an ideal age range?</h2>
         <div id="options-container">
             <h3 id="min">Minimum</h3>
@@ -63,7 +63,7 @@ function Onboarding3() {
             Skip
         </button>
       </div>
-      <button id="next-button" className='bree-serif-regular'>Next Question</button>
+      <button id="next-button" className='bree-serif-regular' onClick={() => navigate('/survey1')}>Next Question</button>
     </>
   )
 }

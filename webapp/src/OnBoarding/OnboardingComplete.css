@@ -1,0 +1,73 @@
+body {
+  background-color: #0B4F6C; /* solid color */
+}
+
+* {
+  margin: 0;
+}
+
+#home-page {
+  width: 100%;
+  text-align: center;
+  padding-top: 180px;
+  flex: 1;
+  align-self: flex-start;
+}
+
+
+
+h1#Heading-complete {
+  font-size: 74px;
+  color: #C2DFE3;
+  padding-top: 20px;
+}
+
+#waves {
+  position: absolute;
+  padding-top: 100px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+#next-button {
+  height: 75px;
+  width: 350px;
+  font-size: 35px;
+  color: #C2DFE3;
+  background-color: #A63446;
+  border: 2px solid #A63446;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-top: 90px;
+  margin-bottom: 50px;
+}
+
+#progress-container {
+  width: 900px;
+  height: 30px;
+  background-color: #C2DFE3;
+  margin-top: 70px;
+  border-radius: 50px;
+  overflow: visible; 
+}
+
+#progress-bar-complete {
+  width: 100%; /* change this to control progress */
+  height: 100%;
+  background: linear-gradient(to right, #C2DFE3, #179EB1);
+  border-radius: 50px;
+}
+
+/* Fonts */
+.nova-oval-regular {
+  font-family: "Nova Oval", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.bree-serif-regular {
+  font-family: "Bree Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}

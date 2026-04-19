@@ -41,7 +41,7 @@ function Onboarding1() {
         <div id="progress-bar-board1"></div>
     </div>
       <div id="main-area">
-        <h1 id="Heading">Tell Us About Yourself</h1>
+        <h1 id="Heading-board1">Tell Us About Yourself</h1>
         <p id="subheading-board1">First Name</p>
         <input id="input-text" type="text" placeholder="Enter your first name here..."/>
         <p id="subheading-board1">Last Name</p>
