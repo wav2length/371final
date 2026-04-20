@@ -1,0 +1,39 @@
+
+#subheading-rating {
+    font-size: 24px;
+    color: #A63446;
+    font-family: "Bree Serif", serif;
+    font-weight: 100;
+    padding-top: 70px;
+    align-self: flex-start;
+    margin-top: 30px;
+}
+
+#options-container-rating {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+#stars-container {
+  display: flex;
+  gap: 60px;
+  margin-top: 80px;
+}
+
+.star {
+  width: 80px;
+  height: 80px;
+  background-color: #179EB1;
+  color: #A63446;
+  font-size: 24px;
+  font-family: "Bree Serif", serif;
+  border: none;
+  cursor: pointer;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.star.selected {
+  background-color: #A63446;
+  color: #C2DFE3;
+}

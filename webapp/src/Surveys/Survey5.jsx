@@ -1,9 +1,10 @@
 import { use, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { socket } from './socket.js'
-import './Survey1.css'
+import { socket } from '../socket.js'
+import RatingComponent from '../Components/RatingComponent.jsx'
+import './Survey.css'
 
-function Survey1() {
+function Survey5() {
   const [ping, setPing] = useState(0)
   const [pong, setPong] = useState(0)
   const navigate = useNavigate()
@@ -44,30 +45,14 @@ function Survey1() {
     </div>
       <div id="main-area">
         <h1 id="Heading-survey1">How interested are you in:</h1>
-        <h1 id="Heading-survey1">playing sports</h1>
-        <div id="options-container">
-            <p id="subheading-survey1">Least</p>
-            <div id="stars-container">
-                {[1, 2, 3, 4, 5].map((num) => (
-                    <button
-                    key={num}
-                    className={selected === num ? 'star selected' : 'star'}
-                    onClick={() => setSelected(num)}
-                    >
-                    {num}
-                    </button>
-                ))}
-                
-            </div>
-            <p id="subheading-survey1">Most</p>
-        </div>
-        
+        <h1 id="Heading-survey1">going to a museum</h1>
+        <RatingComponent selected={selected} setSelected={setSelected} />
       </div>
-      <button id="next-button" className='bree-serif-regular' onClick={() => navigate('/career')}>
+      <button id="next-button" className='bree-serif-regular' onClick={() => navigate('/survey6')}>
         Next Question
       </button>
     </>
   )
 }
 
-export default Survey1
+export default Survey5

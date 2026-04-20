@@ -85,7 +85,7 @@ function OnboardingComplete() {
       <div id="home-page">
         <h1 id="Heading-complete">Onboarding</h1>
         <h1 id="Heading-complete">Complete!</h1>
-        <button id='next-button' className='bree-serif-regular' onClick={() => navigate('/') }>
+        <button id='next-button' className='bree-serif-regular' onClick={() => navigate('/matches') }>
           FIND YOUR WAVE
         </button>
         <img id="waves" src={waves} alt="Waves" />
