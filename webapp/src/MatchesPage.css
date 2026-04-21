@@ -31,6 +31,7 @@ h1#Heading-matches {
   font-family: "Bree Serif", serif;
   padding-left: clamp(40px, 10vw, 120px);
   padding-bottom: 2vh;
+  line-height: 1.2;
 }
 
 #large-logo-matches {
@@ -42,12 +43,14 @@ h2#Subheading-matches {
   font-size: clamp(22px, 3.5vw, 40px);
   color: #A63446;
   font-family: "Bree Serif", serif;
+  line-height: 1.2;
 }
 
 #person-text {
   font-size: clamp(16px, 2.5vw, 28px);
   color: #0A2133;
   font-family: "Bree Serif", serif;
+  line-height: 1.2;
 }
 
 #status-text {
@@ -55,6 +58,7 @@ h2#Subheading-matches {
   color: #0A2133;
   font-family: "Bree Serif", serif;
   padding-top: 3vh;
+  line-height: 1.2;
 }
 
 .main-card {
@@ -69,7 +73,7 @@ h2#Subheading-matches {
   justify-content: center;
   font-family: "Bree Serif", serif;
   align-self: center;
-  margin-top: 4vh;
+  margin-top: 2vh;
 }
 
 #chat-button {

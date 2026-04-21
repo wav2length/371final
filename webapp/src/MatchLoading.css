@@ -29,6 +29,7 @@ body {
   color: #C2DFE3;
   font-family: 'Nova Oval', cursive;
   padding-top: 10vh;
+  line-height: 1.2;
 }
 
 #next-button-loading {

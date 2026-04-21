@@ -19,6 +19,7 @@ h1#Heading-complete {
   font-size: clamp(36px, 6vw, 74px);
   color: #C2DFE3;
   font-family: 'Bree Serif', serif;
+  line-height: 1.2;
 }
 
 #waves {
