@@ -87,7 +87,7 @@ function MatchLoading() {
           View Matches
         </button>
         
-        <img id="waves" src={waves} alt="Waves" />
+        <img id="waves-loading" src={waves} alt="Waves" />
       </div>
     </>
   )
