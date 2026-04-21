@@ -9,7 +9,7 @@ export default function RatingComponent({ selected, setSelected }) {
             {[1, 2, 3, 4, 5].map((num) => (
                 <button
                     key={num}
-                    className={selected === num ? 'star selected' : 'star'}
+                    className={selected >= num ? 'star selected' : 'star'}
                     onClick={() => setSelected(num)}
                 >
                 {num}

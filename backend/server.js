@@ -55,7 +55,8 @@ async function makeMatch() {
 }
 
 async function checkForUpdates(username) {
-    const num_in_queue = setTimeout(() => matchmaking_queue.size, PROGRESS_TIMEOUT);
+    console.log("Requesting an update from the matchmaker...")
+    const num_in_queue = setTimeout(() => {return matchmaking_queue.size}, PROGRESS_TIMEOUT);
     if (!matchmaking_queue.has(username)) {
         return {
             timestamp: Date.now(),
@@ -115,7 +116,8 @@ io.on('connection', socket => {
         }
         // failure is not an option
         socket.emit('enter-matchmaking-success');
-        for (let i = 0; i < NUM_RETRIES || matchmaking_queue.has(username); i++) {
+        for (let i = 0; i < NUM_RETRIES && matchmaking_queue.has(username); i++) {
+            console.log(`Current iteration: ${i} of ${NUM_RETRIES}`)
             let progress = await checkForUpdates(username);
             socket.emit('matchmaking-progress', progress);
         }

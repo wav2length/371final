@@ -4,42 +4,12 @@ import { socket } from '../socket.js'
 import { useNavigate } from 'react-router-dom'
 
 function Onboarding3() {
-  const [ping, setPing] = useState(0)
-  const [pong, setPong] = useState(0)
   const navigate = useNavigate()
   const [selected, setSelected] = useState(false)
 
   const handleClick = () => {
-  setSelected(!selected)  
-}
-
-
-  useEffect(() => {
-    socket.on('pong', () => {
-      // expected to be more, socket.io sends multiple pings during testing
-      setPong((pong) => pong + 1)
-    })
-
-    socket.on('enter-matchmaking-success', () => {
-      return;
-    });
-    socket.on('enter-matchmaking-failure', () => {
-      return;
-    });
-    socket.on('matchmaking-progress', update => {
-      return;
-    });
-
-    socket.on('enter-chat', partner => {
-      return;
-    });
-    socket.on('receive-chat', message => {
-      return;
-    });
-    socket.on('partner-leave-chat', () => {
-      return;
-    });
-  })
+    setSelected(!selected)  
+  }
 
   return (
     <>
@@ -63,7 +33,9 @@ function Onboarding3() {
             Skip
         </button>
       </div>
-      <button id="next-button" className='bree-serif-regular' onClick={() => navigate('/survey1')}>Next Question</button>
+      <button id="next-button" className='bree-serif-regular' onClick={() => navigate('/survey')}>
+        Next Question
+      </button>
     </>
   )
 }

@@ -3,37 +3,8 @@ import './Onboarding1.css'
 import { socket } from '../socket.js'
 import { useNavigate } from 'react-router-dom'
 
-function Onboarding1() {
-  const [ping, setPing] = useState(0)
-  const [pong, setPong] = useState(0)
-    const navigate = useNavigate()
-
-  useEffect(() => {
-    socket.on('pong', () => {
-      // expected to be more, socket.io sends multiple pings during testing
-      setPong((pong) => pong + 1)
-    })
-
-    socket.on('enter-matchmaking-success', () => {
-      return;
-    });
-    socket.on('enter-matchmaking-failure', () => {
-      return;
-    });
-    socket.on('matchmaking-progress', update => {
-      return;
-    });
-
-    socket.on('enter-chat', partner => {
-      return;
-    });
-    socket.on('receive-chat', message => {
-      return;
-    });
-    socket.on('partner-leave-chat', () => {
-      return;
-    });
-  })
+function Onboarding1({setFirstName, setLastName, setPronouns}) {
+  const navigate = useNavigate()
 
   return (
     <>
