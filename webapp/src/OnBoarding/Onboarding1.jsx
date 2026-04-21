@@ -3,7 +3,7 @@ import './Onboarding1.css'
 import { socket } from '../socket.js'
 import { useNavigate } from 'react-router-dom'
 
-function Onboarding1({setFirstName, setLastName, setPronouns}) {
+function Onboarding1({setUsername, setPronouns}) {
   const navigate = useNavigate()
 
   return (
@@ -20,8 +20,13 @@ function Onboarding1({setFirstName, setLastName, setPronouns}) {
         <p id="subheading-board1">Pronouns</p>
         <input id="input-text" type="text" placeholder="Enter your pronouns here..."/>
       </div>
-      <button id="next-button" className='bree-serif-regular' onClick={() => {socket.emit('enter-matchmaking') 
-        navigate('/Onboarding2')}}>
+      <button id="next-button" className='bree-serif-regular' onClick={() => {
+          // TODO form validation
+          // can we maybe have pronouns be a multiple choice and not text entry pretty please
+          setUsername("Seth Polsley");
+          setPronouns("he/him")
+          navigate('/Onboarding2');
+        }}>
         Next Question
       </button>
     </>
