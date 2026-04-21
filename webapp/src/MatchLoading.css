@@ -1,0 +1,60 @@
+body {
+  background-color: #0B4F6C;
+}
+
+* {
+  margin: 0;
+  overflow: hidden;
+}
+
+#loading-page {
+  width: 100%;
+  text-align: center;
+  flex: 1;
+  align-self: flex-start;
+  padding-top: 2vh;
+}
+
+#large-logo-loading {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+#loading-message {
+  font-size: clamp(20px, 4vw, 40px); /* scales between 20px and 40px */
+  color: #C2DFE3;
+  font-family: 'Nova Oval', cursive;
+  padding-top: 10vh;
+}
+
+#next-button-loading {
+  margin-top: 10vh;
+  height: clamp(70px, 10vh, 122px);
+  width: min(410px, 70vw);
+  font-size: clamp(18px, 3vw, 35px);
+  font-family: 'Bree Serif', serif;
+  color: #C2DFE3;
+  background-color: #A63446;
+  border: 2px solid #A63446;
+  border-radius: 25px;
+  cursor: pointer;
+  line-height: 1.1;
+}
+
+#waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%; /* wider than screen so it can slide */
+  animation: wave-slide 3s linear infinite;
+}
+
+@keyframes wave-slide {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+

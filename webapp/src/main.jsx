@@ -7,6 +7,7 @@ import OnboardingComplete from './OnBoarding/OnboardingComplete.jsx'
 import Career from './Career.jsx'
 import Survey from './Surveys/Survey.jsx'
 import MatchesPage from './MatchesPage.jsx'
+import MatchLoading from './MatchLoading.jsx'
 import Chat from './Chat.jsx'
 import { createRoot } from 'react-dom/client'
 import { StrictMode } from 'react'
@@ -27,6 +28,7 @@ createRoot(document.getElementById('root')).render(
         {/* End onboarding pages  */}
         <Route path="/onboarding-complete" element={<OnboardingComplete />} />
         {/* Matches and Chatting Pages */}
+        <Route path="/MatchLoading" element={<MatchLoading />} />
         <Route path="/matches" element={<MatchesPage />} />
         <Route path="/chat" element={<Chat />} />
       </Routes>
