@@ -13,7 +13,7 @@ function Home() {
     <>
       {/* Design for home page */}
       <div id="home-page">
-        <img src={largeLogo} alt="Large Logo" />
+        <img id="large-logo" src={largeLogo} alt="Large Logo" />
         <p id='subtitle'>the dating app that </p>
         <p id='subtitle'>understands YOU first.</p>
         <button id='enter-button' onClick={() => {navigate('/Onboarding1')}}>

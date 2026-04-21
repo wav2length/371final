@@ -7,7 +7,8 @@ body, #root {
 }
 
 #main-area {
-  height: clamp(400px, 60vh, 600px);
+  height: auto; 
+  min-height: clamp(400px, 80vh, 600px);
   width: min(1000px, 90vw);
   background-color: #C2DFE3;
   display: flex;
@@ -16,6 +17,7 @@ body, #root {
   border-radius: 25px;
   margin: auto;
   box-sizing: border-box;
+  padding-bottom: 3vh; 
 }
 
 h1#Heading-board1 {
@@ -23,6 +25,8 @@ h1#Heading-board1 {
   color: #A63446;
   font-family: "Bree Serif", serif;
   font-weight: 400;
+  line-height: 1.2;
+  padding-bottom: 1vh;
 }
 
 #subheading-board1 {
@@ -34,6 +38,8 @@ h1#Heading-board1 {
   padding-left: 30%;
   align-self: flex-start;
   margin-top: 2vh;
+  line-height: 1.2;
+  padding-bottom: 1vh;
 }
 
 #input-text {

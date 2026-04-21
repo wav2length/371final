@@ -12,6 +12,9 @@ body {
   padding-top: 8vh;
   flex: 1;
   align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #heading-container-matches {
@@ -28,6 +31,7 @@ h1#Heading-matches {
   font-family: "Bree Serif", serif;
   padding-left: clamp(40px, 10vw, 120px);
   padding-bottom: 2vh;
+  line-height: 1.2;
 }
 
 #large-logo-matches {
@@ -39,12 +43,14 @@ h2#Subheading-matches {
   font-size: clamp(22px, 3.5vw, 40px);
   color: #A63446;
   font-family: "Bree Serif", serif;
+  line-height: 1.2;
 }
 
 #person-text {
   font-size: clamp(16px, 2.5vw, 28px);
   color: #0A2133;
   font-family: "Bree Serif", serif;
+  line-height: 1.2;
 }
 
 #status-text {
@@ -52,22 +58,7 @@ h2#Subheading-matches {
   color: #0A2133;
   font-family: "Bree Serif", serif;
   padding-top: 3vh;
-}
-
-
-
-#carousel-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: clamp(15px, 3vh, 30px);
-}
-
-#cards-row {
-  display: flex;
-  align-items: center;
-  gap: clamp(10px, 2vw, 20px);
-  margin-bottom: 4vh;
+  line-height: 1.2;
 }
 
 .main-card {
@@ -80,27 +71,9 @@ h2#Subheading-matches {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(5px, 1vh, 10px);
   font-family: "Bree Serif", serif;
-}
-
-.side-card {
-  width: clamp(150px, 20vw, 250px);
-  height: clamp(280px, 40vh, 450px);
-  background-color: #F4A5AE;
-  border: 3px solid #A63446;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Bree Serif", serif;
-  opacity: 0.7;
-}
-
-#controls {
-  display: flex;
-  align-items: center;
-  gap: clamp(10px, 2vw, 20px);
+  align-self: center;
+  margin-top: 2vh;
 }
 
 #chat-button {
@@ -113,18 +86,6 @@ h2#Subheading-matches {
   border: none;
   border-radius: 15px;
   cursor: pointer;
-  margin-bottom: 10vh;
+  margin-top: 8vh;
 }
 
-#controls button:not(#chat-button) {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-#controls button:not(#chat-button) img {
-  width: clamp(25px, 3vw, 40px);
-  height: auto;
-  margin-bottom: 10vh;
-}

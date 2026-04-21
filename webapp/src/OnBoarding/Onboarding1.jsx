@@ -3,7 +3,7 @@ import './Onboarding1.css'
 import { socket } from '../socket.js'
 import { useNavigate } from 'react-router-dom'
 
-function Onboarding1({setFirstName, setLastName, setPronouns}) {
+function Onboarding1({setUsername, setPronouns}) {
   const navigate = useNavigate()
 
   // Define the firstName state variable and the set function for it

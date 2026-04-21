@@ -5,7 +5,7 @@
   font-weight: 100;
   padding-top: 5vh;
   align-self: flex-start;
-  margin-top: 10vh;
+  margin-top: 3vh;
 }
 
 #options-container-rating {
@@ -19,7 +19,7 @@
 #stars-container {
   display: flex;
   gap: clamp(20px, 4vw, 60px);
-  margin-top: 12vh;
+  margin-top: 6vh;
 }
 
 .star {

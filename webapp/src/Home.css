@@ -13,15 +13,18 @@ body {
   align-self: flex-start;
 }
 
+#large-logo {
+  padding-bottom: 5vh;
+}
+
 
 #subtitle {
   font-size: clamp(20px, 4vw, 40px); /* scales between 20px and 40px */
   color: #C2DFE3;
   font-family: 'Nova Oval', cursive;
   padding-top: 2vh;
+  line-height: 1.2;
 }
-
-
 
 #waves {
   position: absolute;
@@ -31,7 +34,7 @@ body {
 }
 
 #enter-button {
-  margin-top: 7vh;
+  margin-top: 12vh;
   height: clamp(70px, 10vh, 122px);
   width: min(410px, 80vw);
   font-size: clamp(18px, 3vw, 35px);

@@ -24,6 +24,7 @@ h1#Heading-survey1 {
   color: #A63446;
   font-family: "Bree Serif", serif;
   font-weight: 400;
+  line-height: 1.2;
 }
 
 #subheading-survey1 {
@@ -33,6 +34,7 @@ h1#Heading-survey1 {
   font-weight: 100;
   align-self: flex-start;
   margin-top: 2vh;
+  line-height: 1.2;
 }
 
 #options-container {

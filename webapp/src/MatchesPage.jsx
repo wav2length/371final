@@ -28,13 +28,6 @@ function MatchesPage() {
             <h1 id="Heading-matches">Meet your</h1>
             <img id="large-logo-matches" src={largeLogo} alt="Large Logo" />
         </div>
-        <div id="carousel-container">
-            <div id="cards-row">
-            {/* left preview card */}
-            <div className="side-card">
-                <h2 id="Subheading-matches">{profiles[(currentIndex - 1 + profiles.length) % profiles.length].name}</h2>
-            </div>
-
             {/* main center card */}
             <div className="main-card">
                 <h2 id="Subheading-matches">{current.name}</h2>
@@ -43,26 +36,10 @@ function MatchesPage() {
                 <p id="person-text">Interests: </p>
                 <p id="person-text">{current.interests.join(', ')}</p>
                 <p id="status-text">Looking for: {current.lookingFor}</p>
-            </div>
-
-            {/* right preview card */}
-            <div className="side-card">
-                <h2 id="Subheading-matches">{profiles[(currentIndex + 1) % profiles.length].name}</h2>
-            </div>
-            </div>
-
-            <div id="controls">
-            <button onClick={() => setCurrentIndex((currentIndex - 1 + profiles.length) % profiles.length)}>
-                <img src={arrowLeft} alt="left arrow" />
-            </button>            
+            </div>          
             <button id="chat-button" onClick={() => {navigate('/chat')}}>
               CHAT
             </button>
-            <button onClick={() => setCurrentIndex((currentIndex + 1) % profiles.length)}>
-              <img src={arrowRight} alt="right arrow" />
-            </button>
-            </div>
-        </div>
       </div>
     </>
   )
