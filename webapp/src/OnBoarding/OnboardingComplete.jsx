@@ -9,6 +9,13 @@ import { useNavigate } from 'react-router-dom'
 function OnboardingComplete() {
   const navigate = useNavigate()
 
+  const handleNext = () => {
+    // Notify server to start match making (disabled, need to move after onboarding finished)
+    socket.emit('enter-matchmaking')
+
+    // Navigate to matches
+    navigate('/matches')
+  }  
   return (
     <>
       <div id="progress-container">
@@ -17,7 +24,7 @@ function OnboardingComplete() {
       <div id="home-page">
         <h1 id="Heading-complete">Onboarding</h1>
         <h1 id="Heading-complete">Complete!</h1>
-        <button id='next-button' onClick={() => navigate('/matches') }>
+        <button id='next-button' onClick={handleNext}>
           FIND YOUR WAVE
         </button>
         <img id="waves" src={waves} alt="Waves" />

@@ -42,7 +42,8 @@ function Survey(setSurveyResponses) {
       <button id="next-button" className='bree-serif-regular' onClick={() => {
         if (questionIdx < surveyTopics.length - 1) {
           // TODO record answer
-
+          questionID = 'store' + questionIdx.replace(" ", "-") + 'results'
+          socket.emit(questionID, JSON.stringify(selectedRating))
           setQuestionIdx(questionIdx + 1);
           setSelectedRating(null)
         } else {

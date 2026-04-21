@@ -78,7 +78,7 @@ function App() {
       // TODO show some sort of alert and navigate away from the chat
       return;
     });
-  });
+  },[]);
 
     return (
         <BrowserRouter>

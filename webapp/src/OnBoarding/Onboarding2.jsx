@@ -7,6 +7,10 @@ function Onboarding2(setGenderPreference) {
   const navigate = useNavigate()
   const [selected, setSelected] = useState(null)
 
+  const handleNext = () => {
+    socket.emit('store-onboarding2-results', JSON.stringify(selected))
+    navigate('/onboarding3')
+  }
   return (
     <>
     <div id="progress-container">
@@ -31,7 +35,7 @@ function Onboarding2(setGenderPreference) {
             </button>
         </div>
       </div>
-      <button id="next-button" className='bree-serif-regular' onClick={() => navigate('/onboarding3') }>Next Question</button>
+      <button id="next-button" className='bree-serif-regular' onClick={handleNext}>Next Question</button>
     </>
   )
 }
