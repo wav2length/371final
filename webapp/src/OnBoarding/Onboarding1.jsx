@@ -14,7 +14,7 @@ function Onboarding1({setFirstName, setLastName, setPronouns}) {
       <div id="main-area">
         <h1 id="Heading-board1">Tell Us About Yourself</h1>
         <p id="subheading-board1">First Name</p>
-        <input id="input-text" type="text" placeholder="Enter your first name here..."/>
+        <input id="input-text" type="text" placeholder="Enter your first name here..." required/>
         <p id="subheading-board1">Last Name</p>
         <input id="input-text" type="text" placeholder="Enter your last name here..."/>
         <p id="subheading-board1">Pronouns</p>

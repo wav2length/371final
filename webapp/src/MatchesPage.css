@@ -1,77 +1,78 @@
 body {
-  background-color: #0B4F6C; /* solid color */
+  background-color: #0B4F6C;
 }
 
 * {
   margin: 0;
 }
 
-#page {
+#page-match {
   width: 100%;
   text-align: center;
-  padding-top: 180px;
+  padding-top: 8vh;
   flex: 1;
   align-self: center;
 }
 
-#heading-container {
+#heading-container-matches {
   display: flex;
   flex-direction: row;
   align-items: center;
   align-self: center;
+  padding-bottom: 4vh;
 }
 
-h1#Heading {
-  font-size: 70px;
+h1#Heading-matches {
+  font-size: clamp(36px, 6vw, 70px);
   color: #C2DFE3;
   font-family: "Bree Serif", serif;
-  padding-left: 120px;
-  padding-bottom: 100px;
+  padding-left: clamp(40px, 10vw, 120px);
+  padding-bottom: 2vh;
 }
 
-h2#Subheading {
-  font-size: 40px;
+#large-logo-matches {
+  width: min(400px, 60vw);
+  height: auto;
+}
+
+h2#Subheading-matches {
+  font-size: clamp(22px, 3.5vw, 40px);
   color: #A63446;
   font-family: "Bree Serif", serif;
 }
 
 #person-text {
-  font-size: 28px;
+  font-size: clamp(16px, 2.5vw, 28px);
   color: #0A2133;
   font-family: "Bree Serif", serif;
 }
 
 #status-text {
-  font-size: 28px;
+  font-size: clamp(16px, 2.5vw, 28px);
   color: #0A2133;
   font-family: "Bree Serif", serif;
-  padding-top: 40px;
+  padding-top: 3vh;
 }
 
-#large-logo {
-  width: 400px;
-  height: 100px;
-  padding-bottom: 90px;
-}
+
 
 #carousel-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: clamp(15px, 3vh, 30px);
 }
 
 #cards-row {
   display: flex;
   align-items: center;
-  gap: 20px;
-  margin-bottom: 50px;
-
+  gap: clamp(10px, 2vw, 20px);
+  margin-bottom: 4vh;
 }
 
 .main-card {
-  width: 400px;
-  height: 550px;
+  width: clamp(250px, 30vw, 400px);
+  height: clamp(350px, 50vh, 550px);
   background-color: #F4A5AE;
   border: 3px solid #A63446;
   border-radius: 20px;
@@ -79,13 +80,13 @@ h2#Subheading {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: clamp(5px, 1vh, 10px);
   font-family: "Bree Serif", serif;
 }
 
 .side-card {
-  width: 250px;
-  height: 450px;
+  width: clamp(150px, 20vw, 250px);
+  height: clamp(280px, 40vh, 450px);
   background-color: #F4A5AE;
   border: 3px solid #A63446;
   border-radius: 20px;
@@ -99,28 +100,20 @@ h2#Subheading {
 #controls {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: clamp(10px, 2vw, 20px);
 }
 
 #chat-button {
-  height: 75px;
-  width: 250px;
-  font-size: 28px;
+  height: clamp(55px, 7vh, 75px);
+  width: clamp(160px, 18vw, 250px);
+  font-size: clamp(18px, 2.5vw, 28px);
   font-family: "Bree Serif", serif;
   background: linear-gradient(to right, #A63446, #69212D);
   color: #C2DFE3;
   border: none;
   border-radius: 15px;
   cursor: pointer;
-  margin-bottom: 160px;
-}
-
-#controls button:not(#chat-button) {
-  background: none;
-  border: none;
-  font-size: 40px;
-  color: #C2DFE3;
-  cursor: pointer;
+  margin-bottom: 10vh;
 }
 
 #controls button:not(#chat-button) {
@@ -131,9 +124,7 @@ h2#Subheading {
 }
 
 #controls button:not(#chat-button) img {
-  width: 40px;  /* adjust size as needed */
-  height: 50px;
-  margin-bottom: 150px;
+  width: clamp(25px, 3vw, 40px);
+  height: auto;
+  margin-bottom: 10vh;
 }
-
-

@@ -81,10 +81,10 @@ function Home() {
     <>
       {/* Design for home page */}
       <div id="home-page">
-        <img id="large-logo" src={largeLogo} alt="Large Logo" />
-        <p id='subtitle' className='nova-oval-regular'>the dating app that </p>
-        <p id='subtitle' className='nova-oval-regular'>understands YOU first.</p>
-        <button id='enter-button' className='bree-serif-regular' onClick={() => {navigate('/Onboarding1')}}>
+        <img src={largeLogo} alt="Large Logo" />
+        <p id='subtitle'>the dating app that </p>
+        <p id='subtitle'>understands YOU first.</p>
+        <button id='enter-button' onClick={() => {navigate('/Onboarding1')}}>
           find someone on your wavelength today!</button>
         <img id="waves" src={waves} alt="Waves" />
       </div>

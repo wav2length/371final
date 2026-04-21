@@ -91,21 +91,21 @@ const current = profiles[currentIndex]
   return (
     <>
       {/* Design for home page */}
-      <div id="page">
-        <div id="heading-container">
-            <h1 id="Heading">Meet your</h1>
-            <img id="large-logo" src={largeLogo} alt="Large Logo" />
+      <div id="page-match">
+        <div id="heading-container-matches">
+            <h1 id="Heading-matches">Meet your</h1>
+            <img id="large-logo-matches" src={largeLogo} alt="Large Logo" />
         </div>
         <div id="carousel-container">
             <div id="cards-row">
             {/* left preview card */}
             <div className="side-card">
-                <h2 id="Subheading">{profiles[(currentIndex - 1 + profiles.length) % profiles.length].name}</h2>
+                <h2 id="Subheading-matches">{profiles[(currentIndex - 1 + profiles.length) % profiles.length].name}</h2>
             </div>
 
             {/* main center card */}
             <div className="main-card">
-                <h2 id="Subheading">{current.name}</h2>
+                <h2 id="Subheading-matches">{current.name}</h2>
                 <p id="person-text">Age: {current.age}</p>
                 <p id="person-text">Career: {current.career}</p>
                 <p id="person-text">Interests: </p>
@@ -115,7 +115,7 @@ const current = profiles[currentIndex]
 
             {/* right preview card */}
             <div className="side-card">
-                <h2 id="Subheading">{profiles[(currentIndex + 1) % profiles.length].name}</h2>
+                <h2 id="Subheading-matches">{profiles[(currentIndex + 1) % profiles.length].name}</h2>
             </div>
             </div>
 

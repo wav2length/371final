@@ -7,10 +7,6 @@ function Onboarding3() {
   const navigate = useNavigate()
   const [selected, setSelected] = useState(false)
 
-  const handleClick = () => {
-    setSelected(!selected)  
-  }
-
   return (
     <>
     <div id="progress-container">
@@ -20,18 +16,29 @@ function Onboarding3() {
         <h1 id="Heading-board3">Tell Us About Yourself</h1>
         <h2 id="subheading-board3">Do you have an ideal age range?</h2>
         <div id="options-container">
-            <h3 id="min">Minimum</h3>
-            <h3 id="max">Maximum</h3>
+            <button id={selected === '18-25' ? 'clicked-option' : 'unclicked-option'}
+                onClick={() => setSelected('18-25')}>
+                18-25
+            </button>
+
+            <button id={selected === '26-35' ? 'clicked-option' : 'unclicked-option'}
+                onClick={() => setSelected('26-35')}>
+                26-35
+            </button>
+            <button id={selected === '36-45' ? 'clicked-option' : 'unclicked-option'}
+                onClick={() => setSelected('36-45')}>
+                36-45
+            </button>
+             <button id={selected === '46+' ? 'clicked-option' : 'unclicked-option'}
+                onClick={() => setSelected('46+')}>
+                46+
+            </button>
+            <button 
+              id={selected === 'skip' ? 'clicked-option' : 'unclicked-option'}
+              onClick={() => setSelected('skip')}>
+              Skip
+            </button>
         </div>
-        <div id="options-container">
-            <input id="input-num" type="number" min="18" max="100"/>  
-            <input id="input-num" type="number" min="18" max="100"/>    
-        </div>
-       <button 
-            id={selected ? 'clicked-option' : 'unclicked-option'}
-            onClick={handleClick}>
-            Skip
-        </button>
       </div>
       <button id="next-button" className='bree-serif-regular' onClick={() => navigate('/survey')}>
         Next Question
