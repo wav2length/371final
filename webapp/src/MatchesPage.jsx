@@ -11,82 +11,14 @@ function MatchesPage() {
   const navigate = useNavigate()
   const [currentIndex, setCurrentIndex] = useState(0)
 
-// hardcoded profiles for testing purposes, will be replaced with actual data from backend
-const profiles = [
-  { name: 'John Doe', age: 26, career: 'entertainment', interests: ['gaming', 'reading', 'concerts', 'yoga'], lookingFor: 'serious relationship' },
-  { name: 'Jane Smith', age: 24, career: 'medicine', interests: ['hiking', 'cooking'], lookingFor: 'casual dating' },
-  // add more profiles
-]
+  // hardcoded profiles for testing purposes, will be replaced with actual data from backend
+  const profiles = [
+    { name: 'John Doe', age: 26, career: 'entertainment', interests: ['gaming', 'reading', 'concerts', 'yoga'], lookingFor: 'serious relationship' },
+    { name: 'Jane Smith', age: 24, career: 'medicine', interests: ['hiking', 'cooking'], lookingFor: 'casual dating' },
+    // add more profiles
+  ]
 
-const current = profiles[currentIndex]
-
-  const [username, setUsername] = useState('');
-
-  const [newProgress, setNewProgress] = useState({
-    timestamp: undefined,
-    message: '', 
-  })
-
-  const [partner, setPartner] = useState('');
-  const [messageHistory, setMessageHistory] = useState([])
-
-  function loginWithUsername(username) {
-    setUsername(username);
-    socket.emit('login', username);
-  }
-
-  function enterMatchmaking() {
-    if (username) {
-      socket.emit('enter-matchmaking');
-    } else {
-      // User needs to log in with a username before entering matchmaking
-      // Something with our navigation logic is wrong if this branch runs
-    }
-  }
-
-  function sendMessage(content) {
-    socket.emit('send-message', {
-      timestamp: Date.now(),
-      content: content
-    });
-  }
-
-  useEffect(() => {
-    socket.on('pong', () => {
-      // expected to be more, socket.io sends multiple pings during testing
-      setPong((pong) => pong + 1);
-    });
-
-    socket.on('login-success', () => {
-      // TODO probably navigate somewhere
-    });
-
-    socket.on('enter-matchmaking-success', () => {
-      // TODO navigate to a progress page
-      return;
-    });
-    socket.on('matchmaking-progress', update => {
-      // useState is weird with objects so I don't think this actually works but I'll be responsible for fixing it later
-      setNewProgress(update)
-      return;
-    });
-    socket.on('matchmaking-failure', () => {
-      // TODO show an alert
-      return;
-    });
-
-    socket.on('enter-chat', partner => {
-      // TODO what information do we want to show the user about their match?
-      setPartner(partner);
-    });
-    socket.on('receive-message', message => {
-      setMessageHistory([...messageHistory, message]);
-    });
-    socket.on('partner-leave-chat', () => {
-      // TODO show some sort of alert and navigate away from the chat
-      return;
-    });
-  });
+  const current = profiles[currentIndex]
 
   return (
     <>

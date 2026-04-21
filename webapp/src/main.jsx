@@ -1,3 +1,4 @@
+import { StrictMode } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './Home.jsx'
 import Onboarding1 from './OnBoarding/Onboarding1.jsx'
@@ -10,7 +11,8 @@ import MatchesPage from './MatchesPage.jsx'
 import MatchLoading from './MatchLoading.jsx'
 import Chat from './Chat.jsx'
 import { createRoot } from 'react-dom/client'
-import { StrictMode } from 'react'
+import './index.css'
+import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
