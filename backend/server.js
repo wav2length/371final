@@ -78,6 +78,8 @@ const PROGRESS_TIMEOUT = 3000 // millis
 // Maximum number of retry's before bailing on finding a match (YOU WILL BE ALONE FOREVER :3)
 const NUM_RETRIES = 10
 
+// Avoids multiple simultaneous attempts at matchmaking
+let matchmaking = false;
 
 // Finds and returns socketID for a given username of all online users
 function getSocketFromUsername(username) {
@@ -111,7 +113,8 @@ async function checkForUpdates(username) {
         };
     // If there are at least two individuals in the queue try to make a match
     } else if (num_in_queue >= 2) {
-        await makeMatch();
+        if (!matchmaking)
+            await makeMatch();
         return {
             timestamp: Date.now(),
             message: "Matchmaking in progress..."
@@ -130,12 +133,45 @@ async function makeMatch() {
     // Grab the first two usernames from those in the matchmaking queue 
     // [...matchmaking_queue] stretches the set into an array (very nifty)
     const [partner1, partner2] = [...matchmaking_queue]
+    let prediction = 0
 
     // if there are not two individals we can't do anyhtin
     if (!partner1 || !partner2)
         return
 
     // IMPLEMENT THE MATCHMAKING HERE BASED ON THE ALGORITHM
+    // will attempt to match 10 times
+    for (let i = 0; i < NUM_RETRIES && prediction < 0.8; i++) {
+        const currQueue = Array.from(matchmaking_queue)
+        let wouldDate1 = false;
+        let wouldDate2 = false;
+        const attributes1 = user_profiles.get(partner1)
+        const attributes2 = user_profiles.get(partner2)
+        let preferenceRetries = 0;
+        do {
+            preferenceRetries++;
+            partner1 = currQueue[Math.floor(Math.random() * currQueue.length)];
+            partner2 = currQueue[Math.floor(Math.random() * currQueue.length)];
+            attributes1 = user_profiles.get(partner1)
+            attributes2 = user_profiles.get(partner2)
+            wouldDate1 = attributes2.genderPreference == null || attributes2.genderPreference == attributes1.gender
+            wouldDate2 = attributes1.genderPreference == null || attributes1.genderPreference == attributes2.gender
+        } while (partner1 == partner2 || (preferenceRetries < 20 || (!wouldDate1 && !wouldDate2)));
+
+        // Get attributes from both partners then merge
+        const data1 = Object.values(attributes1).slice(8, 53)
+        const data2 = Object.values(attributes2).slice(8, 53)
+        const pair = [...data1, ...data2]
+
+        const response = await fetch("http://localhost:8000/predict", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ features: pair })
+        });
+
+        const result = await response.json();
+        prediction = result.prediction;
+    }
 
     // Remove both users from the matchmaking queue since they've matched
     matchmaking_queue.delete(partner1)
