@@ -19,11 +19,11 @@ function Onboarding1() {
   const handleNext = () => {
     // Check if last name was filled out
     if (lastName === ""){
-      lastName = "Last name not given"
+      setLastName("Last name not given")
     }
     // Check if pronouns were filled out
     if(pronouns === ""){
-      pronouns = "No stated pronouns"
+      setPronouns("No stated pronouns")
     }
     // Send information back to the server
     socket.emit('store-onboarding1-results', JSON.stringify({firstName, lastName, gender, pronouns}))
@@ -42,7 +42,7 @@ function Onboarding1() {
         <p id="subheading-board1">First Name</p>
         <input value={firstName} onChange={e => setFirstName(e.target.value)} id="input-text" type="text" placeholder="Enter your first name here..." required/>
         <p id="subheading-board1">Last Name</p>
-        <input value={lastName} onChange={e => setLastName(e.target.value)} id="input-text" type="text" placeholder="Enter your last name here..."/>
+        <input value={lastName} onChange={e => setLastName(e.target.value)} id="input-text" type="text" placeholder="Enter your last name here..." required/>
         <p id="subheading-board1">Gender</p>
         <input value={gender} onChange={e => setGender(e.target.value)} id="input-text" type="text" placeholder="Enter your gender here... " required/>
         <p id="subheading-board1">Pronouns</p>
