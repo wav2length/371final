@@ -16,7 +16,7 @@ function Home() {
         <img id="large-logo" src={largeLogo} alt="Large Logo" />
         <p id='subtitle'>the dating app that </p>
         <p id='subtitle'>understands YOU first.</p>
-        <button id='enter-button' onClick={() => {navigate('/Onboarding1')}}>
+        <button id='enter-button' onClick={() => {navigate('/login')}}>
           find someone on your wavelength today!</button>
         <img id="waves" src={waves} alt="Waves" />
       </div>
