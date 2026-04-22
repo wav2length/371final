@@ -1,7 +1,7 @@
 import { use, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { socket } from './socket.js'
-import './Career.css'
+import { socket } from '../socket.js'
+import '../Career.css'
 
 function Career() {
   const [selectedJoinReason, setSelectedJoinReason] = useState(null)

@@ -91,12 +91,6 @@ function App() {
       // TODO show an alert
       return;
     });
-
-    socket.on('enter-chat', partner => {
-      // TODO what information do we want to show the user about their match?
-      console.log("MATCHED!!!!!!!")
-      setPartner(partner);
-    });
     socket.on('receive-message', message => {
       setMessageHistory([...messageHistory, message]);
     });
@@ -122,7 +116,7 @@ function App() {
             {/* End onboarding pages  */}
             <Route path="/onboarding-complete" element={<OnboardingComplete />} />
             {/* Matches and Chatting Pages */}
-            <Route path="/matchmaking" element={<MatchLoading progressText={newProgress} />} />
+            <Route path="/matchmaking" element={<MatchLoading progressText={newProgress} setPartner={setPartner} />} />
             <Route path="/matches" element={<MatchesPage />} />
             <Route path="/chat" element={<Chat />} />
             <Route path="/login" element={<Login />} />

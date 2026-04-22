@@ -167,6 +167,7 @@ h1#Heading {
   font-size: clamp(14px, 1.8vw, 18px);
   font-family: "Bree Serif", serif;
   background-color: white;
+  color: black;
 }
 
 #send-button {
