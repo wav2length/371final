@@ -132,7 +132,7 @@ async function checkForUpdates(username) {
 async function makeMatch() {
     // Grab the first two usernames from those in the matchmaking queue 
     // [...matchmaking_queue] stretches the set into an array (very nifty)
-    const [partner1, partner2] = [...matchmaking_queue]
+    let [partner1, partner2] = [...matchmaking_queue]
     let prediction = 0
 
     // if there are not two individals we can't do anyhtin
@@ -145,8 +145,8 @@ async function makeMatch() {
         const currQueue = Array.from(matchmaking_queue)
         let wouldDate1 = false;
         let wouldDate2 = false;
-        const attributes1 = user_profiles.get(partner1)
-        const attributes2 = user_profiles.get(partner2)
+        let attributes1 = user_profiles.get(partner1)
+        let attributes2 = user_profiles.get(partner2)
         let preferenceRetries = 0;
         do {
             preferenceRetries++;

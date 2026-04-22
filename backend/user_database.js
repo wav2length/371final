@@ -33,13 +33,13 @@ function save_user(user) {
 }
 
 // Searches the database for a user matching firstName, returns null if not found
-function log_user_in(firstNameJSON) {
-    const firstName = JSON.parse(firstNameJSON)
+function log_user_in(usernameJSON) {
+    const username = JSON.parse(usernameJSON)
     const users = load_db()
-    const user = users.find(u => u.firstName === firstName)
+    const user = users.find(u => u.username === username)
 
     if (!user) {
-        console.log(`No user found with firstName: ${firstName}`)
+        console.log(`No user found with username: ${username}`)
         return null
     }
 
