@@ -93,6 +93,7 @@ function App() {
 
     socket.on('enter-chat', partner => {
       // TODO what information do we want to show the user about their match?
+      console.log("MATCHED!!!!!!!")
       setPartner(partner);
     });
     socket.on('receive-message', message => {
