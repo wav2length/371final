@@ -3,6 +3,7 @@ import Home from './Home.jsx'
 import Onboarding1 from './OnBoarding/Onboarding1.jsx'
 import Onboarding2 from './OnBoarding/Onboarding2.jsx'
 import Onboarding3 from './OnBoarding/Onboarding3.jsx'
+import Onboarding4 from './OnBoarding/Onboarding4.jsx'
 import OnboardingComplete from './OnBoarding/OnboardingComplete.jsx'
 import Career from './Career.jsx'
 import Survey from './Surveys/Survey.jsx'
@@ -112,6 +113,7 @@ function App() {
             <Route path="/onboarding1" element={<Onboarding1 />} />
             <Route path="/onboarding2" element={<Onboarding2 />} />
             <Route path="/onboarding3" element={<Onboarding3 />} />
+            <Route path="/onboarding4" element={<Onboarding4 />} />
             {/* survey rating questions */}
             <Route path="/survey" element={<Survey />} />
             {/* Career page  */}
