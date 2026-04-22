@@ -27,9 +27,10 @@ function Survey(setSurveyResponses) {
     "shopping",
     "doing yoga"
   ];
-  const surveryResponses = new Array[length(surveyTopics)]
+  const surveyResponses = Array(surveyTopics.length)
 
   const handleNext = () => {
+    socket.emit('store-survey-results', JSON.stringify(surveyResponses))
     navigate('/career')
   }
 
@@ -45,13 +46,13 @@ function Survey(setSurveyResponses) {
       </div>
       <button id="next-button" className='bree-serif-regular' onClick={() => {
         if (questionIdx < surveyTopics.length - 1) {
-          // TODO record answer
-          surveryResponses[questionIdx] = selectedRating
-          socket.emit('store-survey-results', JSON.stringify(surveryResponses))
+          // shh the database technically has ratings out of 10 so I'm just hacking ts
+          // hi polsley
+          surveyResponses[questionIdx] = selectedRating * 2
           setQuestionIdx(questionIdx + 1);
           setSelectedRating(null)
         } else {
-          handleNext
+          handleNext()
         }
       }}>
         Next Question

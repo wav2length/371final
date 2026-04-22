@@ -3,14 +3,14 @@ import { Server } from 'socket.io'
 import cors from 'cors'
 import {
     create_user,
-    add_user_age_range_preference,
+    add_user_age,
     add_user_career,
     add_user_sexual_attraction,
     add_user_survey_response,
     complete_user_onboarding
-} from './user'
-import { load_db, save_db, save_user, log_user_in } from './user_database'
-import { socket } from '../webapp/src/socket'
+} from './user.js'
+import { load_db, save_db, save_user, log_user_in } from './user_database.js'
+import { socket } from '../webapp/src/socket.js'
 
 
 //
@@ -159,8 +159,8 @@ async function makeMatch() {
         } while (partner1 == partner2 || (preferenceRetries < 20 || (!wouldDate1 && !wouldDate2)));
 
         // Get attributes from both partners then merge
-        const data1 = Object.values(attributes1).slice(8, 53)
-        const data2 = Object.values(attributes2).slice(8, 53)
+        const data1 = Object.values(attributes1).slice(7, 52)
+        const data2 = Object.values(attributes2).slice(7, 52)
         const pair = [...data1, ...data2]
 
         const response = await fetch("http://localhost:8000/predict", {
@@ -293,7 +293,7 @@ io.on('connection', socket => {
 
     socket.on('store-onboarding2-results', data =>{
         // Get username
-        const username = users_online.get(socketID)
+        const username = users_online.get(socket.id)
         // Get user profile
         const user = user_profiles.get(username)
 
@@ -309,7 +309,7 @@ io.on('connection', socket => {
 
     socket.on('store-onboarding3-results', data =>{
         // Get username
-        const username = users_online.get(socketID)
+        const username = users_online.get(socket.id)
         // Get user profile
         const user = user_profiles.get(username)
 
@@ -319,13 +319,13 @@ io.on('connection', socket => {
         }
         
         // Upadate user profile with new information
-        add_user_age_range_preference(user, data)
-        console.log(`Stored age range data for ${username}`)
+        add_user_age(user, data)
+        console.log(`Stored age data for ${username}`)
     })
 
     socket.on('store-survey-results', data => {
         // Get username
-        const username = users_online.get(socketID)
+        const username = users_online.get(socket.id)
         // Get user profile
         const user = user_profiles.get(username)
 
@@ -336,12 +336,12 @@ io.on('connection', socket => {
         
         // Upadate user profile with new information
         add_user_survey_response(user, data)
-        console.log(`Stored age range data for ${username}`)
+        console.log(`Stored survey data for ${username}`)
     })
 
     socket.on('store-career-results', data => {
         // Get username
-        const username = users_online.get(socketID)
+        const username = users_online.get(socket.id)
         // Get user profile
         const user = user_profiles.get(username)
 
@@ -352,12 +352,12 @@ io.on('connection', socket => {
         
         // Upadate user profile with new information
         add_user_career(user, data)
-        console.log(`Stored age range data for ${username}`)
+        console.log(`Stored career data for ${username}`)
     })
 
     socket.on('enter-matchmaking', async () => {
         // Get username
-        const username = users_online.get(socketID)
+        const username = users_online.get(socket.id)
         // Get user profile
         const user = user_profiles.get(username)
 
@@ -381,7 +381,7 @@ io.on('connection', socket => {
 
     socket.on('send-message', message => {
         // Get username
-        const username = users_online.get(socketID)
+        const username = users_online.get(socket.id)
         // Get partner
         const partner = chat_links.get(username)
 

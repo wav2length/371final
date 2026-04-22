@@ -16,3 +16,5 @@ def predict(data: InputData):
     X = np.array(data.features).reshape(1, -1)
     pred = model.predict(X).tolist()
     return {"prediction": pred}
+
+# COMMAND TO RUN: `uvicorn model_api:app --host 0.0.0.0 --port 8000 --reload`

@@ -1,4 +1,4 @@
-import {save_user} from user_database.js
+import {save_user} from './user_database.js'
 
 // Creates user based on the information retireved from Onboarding1.jsx
 // This function is part of the onboarding process
@@ -18,8 +18,7 @@ function create_user(onboarding1_JSON_object) {
 
         // Preferences
         genderPreference: null,
-        agePreferenceMin: -1,
-        agePreferenceMax: -1,
+        age: 0,
 
         // Interests: scale of 1-5
         sports: 0,
@@ -106,7 +105,7 @@ const SURVEY_KEY_MAP = {
 // Modifies the user field gender preference based on the information retireved from Onboarding2.jsx
 // This function is part of the onboarding process
 function add_user_sexual_attraction(user, onboarding2_JSON_object) {
-    const preference = JSON.parse(preferenceJSON)
+    const preference = JSON.parse(onboarding2_JSON_object)
     user.genderPreference = preference
     return user
 }
@@ -114,7 +113,7 @@ function add_user_sexual_attraction(user, onboarding2_JSON_object) {
 // Modifies the user object to add the results of survey.jsx
 // This function is part of the onboarding process
 function add_user_survey_response(user, survey_JSON_object) {
-    const responses = JSON.parse(surveyJSON)
+    const responses = JSON.parse(survey_JSON_object)
     for (const [topic, rating] of Object.entries(responses)) {
         const key = SURVEY_KEY_MAP[topic]
         if (key) {
@@ -137,14 +136,9 @@ function add_user_career(user, career_JSON_object) {
 
 // Modifies the user object to add the results of Onboarding3.jsx
 // This function is part of the onboarding process
-function add_user_age_range_preference(user, age_preference_JSON_object){
-    const agePreference = JSON.parse(age_preference_JSON_object)
-    if(agePreference > 99){
-        ageMin = agePreference / 100
-        ageMax = agePreference % 100
-    }
-    user.agePreferenceMin = ageMin
-    user.agePreferenceMin = ageMax
+function add_user_age(user, age_JSON_object){
+    const age = JSON.parse(age_JSON_object)
+    user.age = age;
     return user
 }
 
@@ -157,4 +151,4 @@ function complete_user_onboarding(user) {
 }
 
 export { create_user, complete_user_onboarding, add_user_sexual_attraction, 
-         add_user_age_range_preference, add_user_survey_response, add_user_career}
+         add_user_age, add_user_survey_response, add_user_career}

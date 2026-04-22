@@ -5,6 +5,7 @@ import './Career.css'
 
 function Career() {
   const [selectedCareerField, setSelectedCareerField] = useState(null)
+  const navigate = useNavigate()
   
   const fields = [
     'Law', 'Academia', 'Psychology',
