@@ -396,7 +396,7 @@ io.on('connection', socket => {
         // Remove from matchmaking queue and chat
         matchmaking_queue.delete(username)
         const partner = chat_links.get(username)
-        if(!partner){
+        if(partner){
             // Make sure there is no active links
             chat_links.delete(username)
             chat_links.delete(partner)
