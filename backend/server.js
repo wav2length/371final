@@ -177,6 +177,10 @@ async function makeMatch() {
     matchmaking_queue.delete(partner1)
     matchmaking_queue.delete(partner2)
 
+    // Link usernames to each other
+    chat_links.set(partner1, partner2)
+    chat_links.set(partner2, partner1)
+
     console.log(`Matched ${partner1} with ${partner2}`)
 
     const socket1 = getSocketFromUsername(partner1)
