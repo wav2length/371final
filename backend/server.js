@@ -323,6 +323,22 @@ io.on('connection', socket => {
         console.log(`Stored age data for ${username}`)
     })
 
+    socket.on('store-onboarding4-results', data => {
+        // Get username
+        const username = users_online.get(socket.id)
+        // Get user profile
+        const user = user_profiles.get(username)
+
+        if(!user){
+            console.warn(`No user profile for ${username} | onboarding4-results`)
+            return
+        }
+        
+        // Upadate user profile with new information
+        add_user_join_reason(user, data)
+        console.log(`Stored join reason data for ${username}`)
+    })
+
     socket.on('store-survey-results', data => {
         // Get username
         const username = users_online.get(socket.id)
