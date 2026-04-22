@@ -6,8 +6,18 @@ import { socket } from './socket.js'
 import { useNavigate } from 'react-router-dom'
 
 
-function MatchLoading({progress}) {
+function MatchLoading({progress, setPartner}) {
   const navigate = useNavigate()
+
+  useEffect(() => {
+    socket.on('enter-chat', partner => {
+      // TODO what information do we want to show the user about their match?
+      console.log("MATCHED!!!!!!!")
+      setPartner(partner);
+      navigate('/chat')
+    });
+  });
+  
 
   return (
     <>
