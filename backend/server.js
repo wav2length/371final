@@ -112,7 +112,7 @@ async function checkForUpdates(username) {
             message: "You've been matched!"
         };
     // If there are at least two individuals in the queue try to make a match
-    } else if (num_in_queue >= 2) {
+    } else if (matchmaking_queue.size >= 2) {
         if (!matchmaking)
             await makeMatch();
         return {
