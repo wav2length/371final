@@ -4,7 +4,7 @@ import { socket } from '../socket.js'
 import RatingComponent from '../Components/RatingComponent.jsx'
 import './Survey.css'
 
-function Survey(setSurveyResponses) {
+function Survey() {
   const navigate = useNavigate()
   const [selectedRating, setSelectedRating] = useState(0)
   const [questionIdx, setQuestionIdx] = useState(0)
@@ -27,10 +27,14 @@ function Survey(setSurveyResponses) {
     "shopping",
     "doing yoga"
   ];
-  const surveyResponses = Array(surveyTopics.length)
+  const [surveyResponses, setSurveyResponses] = useState([])
 
   const handleNext = () => {
-    socket.emit('store-survey-results', JSON.stringify(surveyResponses))
+    const surveyObj = surveyTopics.reduce((obj, key, idx) => {
+      obj[key] = surveyResponses[idx];
+      return obj;
+    }, {});
+    socket.emit('store-survey-results', JSON.stringify(surveyObj))
     navigate('/career')
   }
 
@@ -45,13 +49,15 @@ function Survey(setSurveyResponses) {
         <RatingComponent selected={selectedRating} setSelected={setSelectedRating} />
       </div>
       <button id="next-button" className='bree-serif-regular' onClick={() => {
-        if (questionIdx < surveyTopics.length - 1) {
-          // shh the database technically has ratings out of 10 so I'm just hacking ts
-          // hi polsley
-          surveyResponses[questionIdx] = selectedRating * 2
-          setQuestionIdx(questionIdx + 1);
-          setSelectedRating(null)
-        } else {
+        // shh the database technically has ratings out of 10 so I'm just hacking ts
+        // hi polsley
+        if (selectedRating)
+          setSurveyResponses([...surveyResponses, selectedRating.valueOf() * 2])
+        else
+          setSurveyResponses([...surveyResponses, 1])
+        setQuestionIdx(questionIdx + 1);
+        setSelectedRating(null)
+        if (questionIdx >= surveyTopics.length - 1) {
           handleNext()
         }
       }}>

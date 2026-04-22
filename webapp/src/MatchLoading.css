@@ -51,11 +51,11 @@ body {
   bottom: 0;
   left: 0;
   width: 200%; /* wider than screen so it can slide */
-  animation: wave-slide 3s linear infinite;
+  animation: wave-slide 2s linear infinite;
 }
 
 @keyframes wave-slide {
-  0% { transform: translateX(-50%); }
+  0% { transform: translateX(-42%); }
   100% { transform: translateX(0); }
 }
 

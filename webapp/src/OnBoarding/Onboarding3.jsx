@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 function Onboarding3() {
   const navigate = useNavigate()
-  const [age, setAge] = useState(0)
+  const [age, setAge] = useState(18)
 
   const handleNext = () => {
     socket.emit('store-onboarding3-results', JSON.stringify(age))
@@ -21,11 +21,11 @@ function Onboarding3() {
         <h1 id="Heading-board3">Tell Us About Yourself</h1>
         <h2 id="subheading-board3">How old are you?</h2>
         <div id="options-container">
-            <input id="input-num" type="number" min="18" max="120" onChange={() => {
-              if (age < 18) {
-                setAge(18);
-              }
-            }}/>  
+            <input id="input-num" type="number" min="18" max="120" value={age} onChange={(e) => {setAge(e.target.value)}}
+              onBlur={(e) => {
+                if (age < 18) setAge(18)
+                if (age > 120) setAge(120)
+              }}/>  
         </div>
       </div>
       <button id="next-button" className='bree-serif-regular' onClick={handleNext}>

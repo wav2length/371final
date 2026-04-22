@@ -14,7 +14,7 @@ function OnboardingComplete() {
     socket.emit('enter-matchmaking')
 
     // Navigate to matches
-    navigate('/matches')
+    navigate('/matchmaking')
   }  
   return (
     <>

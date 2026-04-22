@@ -113,6 +113,7 @@ function add_user_sexual_attraction(user, onboarding2_JSON_object) {
 // Modifies the user object to add the results of survey.jsx
 // This function is part of the onboarding process
 function add_user_survey_response(user, survey_JSON_object) {
+    console.log(`Attempting to parse interests from ${survey_JSON_object}`)
     const responses = JSON.parse(survey_JSON_object)
     for (const [topic, rating] of Object.entries(responses)) {
         const key = SURVEY_KEY_MAP[topic]
@@ -137,6 +138,7 @@ function add_user_career(user, career_JSON_object) {
 // Modifies the user object to add the results of Onboarding3.jsx
 // This function is part of the onboarding process
 function add_user_age(user, age_JSON_object){
+    console.log(`Attempting to parse age from ${age_JSON_object}`)
     const age = JSON.parse(age_JSON_object)
     user.age = age;
     return user

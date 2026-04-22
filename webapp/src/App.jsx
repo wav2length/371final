@@ -7,17 +7,17 @@ import OnboardingComplete from './OnBoarding/OnboardingComplete.jsx'
 import Career from './Career.jsx'
 import Survey from './Surveys/Survey.jsx'
 import MatchesPage from './MatchesPage.jsx'
+import MatchLoading from './MatchLoading.jsx'
 import Chat from './Chat.jsx'
 import { useState, useEffect } from 'react'
 import { socket } from './socket.js'
 
 function App() {
-  const navigate = useNavigate()
   const [username, setUsername] = useState('');
   const [userGender, setUserGender] = useState('');
   const [userPreference, setUserPreference] = useState('');
 
-  const CAREER_MAP = new Map({
+  const CAREER_MAP = {
     1: 'career_lawyer',
     2: 'career_academia',
     3: 'career_psychologist',
@@ -35,7 +35,7 @@ function App() {
     15: 'career_other',
     16: 'career_journalism',
     17: 'career_architecture'
-  });
+  };
 
   const [newProgress, setNewProgress] = useState({
     timestamp: undefined,
@@ -118,6 +118,7 @@ function App() {
             {/* End onboarding pages  */}
             <Route path="/onboarding-complete" element={<OnboardingComplete />} />
             {/* Matches and Chatting Pages */}
+            <Route path="/matchmaking" element={<MatchLoading progressText={newProgress} />} />
             <Route path="/matches" element={<MatchesPage />} />
             <Route path="/chat" element={<Chat />} />
             </Routes>

@@ -96,7 +96,7 @@ function getSocketFromUsername(username) {
 }
 
 
-// Cheks for updates
+// Checks for updates
 // Waits and checks the queue periodicly, returns a status message for the frontend
 async function checkForUpdates(username) {
     console.log(`Requesting an update from the matchmaker for ${username}...`)

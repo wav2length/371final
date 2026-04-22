@@ -26,7 +26,7 @@ function Onboarding1() {
       pronouns = "No stated pronouns"
     }
     // Send information back to the server
-    socket.emit('store-onboarding1-results', JSON.stringify({firstName, lastName, pronouns}))
+    socket.emit('store-onboarding1-results', JSON.stringify({firstName, lastName, gender, pronouns}))
 
     // Go to the next step of onboarding
     navigate('/Onboarding2')
