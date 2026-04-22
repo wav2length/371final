@@ -1,75 +1,177 @@
-import { use, useEffect, useState } from 'react'
-import searchIcon from './Assets/SearchIcon.png'
+import { useEffect, useState } from 'react'
 import arrowLeft from './Assets/ArrowLeft.png'
 import './Chat.css'
 import { socket } from './socket.js'
 import { useNavigate } from 'react-router-dom'
 
-
-function Chat({sendMessage}) {
+function Chat({ partner }) {
   const navigate = useNavigate()
   const [messages, setMessages] = useState([])
   const [input, setInput] = useState('')
-  const [selectedContact, setSelectedContact] = useState('John Doe')
-  const contacts = ['John Doe', 'Person A', 'Person B']
+  const [partnerLeft, setPartnerLeft] = useState(false)
+
+  useEffect(() => {
+    // Listen for incoming messages from the partner
+    socket.on('receive-message', message => {
+      setMessages(prev => [...prev, message])
+    })
+
+    // Partner left — show an in-chat notice rather than a jarring alert
+    socket.on('partner-leave-chat', () => {
+      setPartnerLeft(true)
+      // Add a system message to the chat so the user can see what happened
+      setMessages(prev => [...prev, {
+        sender: 'System',
+        content: `${partner?.username || 'Your match'} has left the chat.`,
+        timestamp: Date.now(),
+        isSystem: true
+      }])
+    })
+
+    // Clean up listeners when component unmounts
+    return () => {
+      socket.off('receive-message')
+      socket.off('partner-leave-chat')
+    }
+  }, [partner])
+
+  const handleSend = () => {
+    // Don't send if input is empty or partner already left
+    if (!input.trim() || partnerLeft) return
+
+    const message = {
+      sender: 'You',
+      content: input.trim(),
+      timestamp: Date.now()
+    }
+
+    // Add to local messages immediately so sender sees it right away
+    setMessages(prev => [...prev, message])
+    socket.emit('send-message', message)
+    setInput('')
+  }
+
+  const handleLeaveChat = () => {
+    // Notify the server that this user is leaving
+    // Server will then notify the partner via 'partner-leave-chat'
+    socket.emit('leave-chat')
+    navigate('/matches')
+  }
+
+  // Pull the career field name from the partner info object
+  // Career flags are 1/0: find whichever one is set
+  const getCareer = (info) => {
+    if (!info) return '—'
+    const careerKeys = Object.keys(info).filter(k => k.startsWith('career_') && info[k] === 1)
+    if (careerKeys.length === 0) return 'Unknown'
+    // Convert key like "career_creative_arts" -> "Creative Arts"
+    return careerKeys[0]
+      .replace('career_', '')
+      .split('_')
+      .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(' ')
+  }
+
+  // Pull interest names where rating is above 3 stars
+  const getTopInterests = (info) => {
+    if (!info) return []
+    const interestKeys = ['sports', 'tvsports', 'exercise', 'dining', 'museums',
+      'art', 'hiking', 'gaming', 'clubbing', 'reading', 'tv',
+      'theater', 'movies', 'concerts', 'music', 'shopping', 'yoga']
+    return interestKeys
+      .filter(k => info[k] >= 6) // ratings are doubled so 6 = 3/5 stars
+      .map(k => k.charAt(0).toUpperCase() + k.slice(1))
+  }
+
+  const info = partner?.info
+  const topInterests = getTopInterests(info)
 
   return (
-  <div id="chat-page">
-    {/* Left sidebar */}
-    <div id="sidebar">
-      <h2>Messages</h2>
-      <div id="search-wrapper">
-        <img src={searchIcon} alt="search" id="search-icon" />
-        <input id="search" type="text" />
-    </div>
-      {contacts.map(contact => (
-        <button
-          key={contact}
-          className={selectedContact === contact ? 'contact selected' : 'contact'}
-          onClick={() => setSelectedContact(contact)}
-        >
-          {contact}
+    <div id="chat-page">
+      {/* Left sidebar — partner info */}
+      <div id="sidebar">
+        <h2 id="sidebar-name">{partner?.username || 'Your Match'}</h2>
+
+        <div id="sidebar-section">
+          <p className="sidebar-label">Gender</p>
+          <p className="sidebar-value">{info?.gender || '—'}</p>
+        </div>
+
+        <div id="sidebar-section">
+          <p className="sidebar-label">Pronouns</p>
+          <p className="sidebar-value">{info?.pronouns || '—'}</p>
+        </div>
+
+        <div id="sidebar-section">
+          <p className="sidebar-label">Career</p>
+          <p className="sidebar-value">{getCareer(info)}</p>
+        </div>
+
+        <div id="sidebar-section">
+          <p className="sidebar-label">Top Interests</p>
+          {topInterests.length > 0
+            ? topInterests.map(interest => (
+                <p key={interest} className="sidebar-value">{interest}</p>
+              ))
+            : <p className="sidebar-value">—</p>
+          }
+        </div>
+
+        <div id="sidebar-section">
+          <p className="sidebar-label">Gender Preference</p>
+          <p className="sidebar-value">{info?.genderPreference || '—'}</p>
+        </div>
+
+        {/* Leave chat button in sidebar so it's always visible */}
+        <button id="leave-button" onClick={handleLeaveChat}>
+          Leave Chat
         </button>
-      ))}
+      </div>
+
+      {/* Right chat area */}
+      <div id="chat-area">
+        <div id="chat-header">
+          <h2>{partner?.username || 'Chat'}</h2>
+          {/* Show a status indicator if partner has left */}
+          {partnerLeft
+            ? <p id="partner-status-left">Left the chat</p>
+            : <p id="partner-status-active">Active</p>
+          }
+        </div>
+
+        <div id="messages-list">
+          {messages.map((msg, i) => (
+            // System messages like "partner left" get their own style
+            msg.isSystem
+              ? <p key={i} id="system-message">{msg.content}</p>
+              : <div key={i} className={`message ${msg.sender === 'You' ? 'mine' : 'theirs'}`}>
+                  <div className="avatar">
+                    {msg.sender.split(' ').map(n => n[0]).join('')}
+                  </div>
+                  <div>
+                    <p className="sender-name">{msg.sender}</p>
+                    <p className="message-content">{msg.content}</p>
+                  </div>
+                </div>
+          ))}
+        </div>
+
+        <div id="input-area">
+          <input
+            id="message-input"
+            type="text"
+            placeholder={partnerLeft ? 'Your match has left the chat...' : 'Write a message...'}
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && handleSend()}
+            // Disable input if partner has left so user knows they can't message anymore
+            disabled={partnerLeft}
+          />
+          <button id="send-button" onClick={handleSend} disabled={partnerLeft}>➤</button>
+        </div>
+      </div>
     </div>
-
-    {/* Right chat area */}
-    <div id="chat-area">
-      {/* Header */}
-      <div id="chat-header">
-        <h2>{selectedContact}</h2>
-        <button id="info-button">?</button>
-      </div>
-
-      {/* Messages */}
-      <div id="messages-list">
-        {messages.map((msg, i) => (
-          <div key={i} className="message">
-            <div className="avatar">{msg.sender.split(' ').map(n => n[0]).join('')}</div>
-            <div>
-              <p className="sender-name">{msg.sender}</p>
-              <p className="message-content">{msg.content}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Input */}
-      <div id="input-area">
-        <input
-          id="message-input"
-          type="text"
-          placeholder="Write a message..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
-        />
-        <button id="send-button" onClick={sendMessage}>➤</button>
-      </div>
-        <button id="back-button" onClick={() => navigate('/matches')}><img src={arrowLeft} alt="left arrow" /></button>
-    </div>
-  </div>
-)
+  )
 }
 
 export default Chat

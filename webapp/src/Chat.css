@@ -7,38 +7,6 @@ body {
   box-sizing: border-box;
 }
 
-#page {
-  width: 100%;
-  text-align: center;
-  padding-top: 15vh;
-  flex: 1;
-  align-self: center;
-}
-
-#heading-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  align-self: center;
-}
-
-h1#Heading {
-  font-size: clamp(36px, 6vw, 70px);
-  color: #C2DFE3;
-  font-family: "Bree Serif", serif;
-  padding-left: clamp(40px, 10vw, 120px);
-  padding-bottom: 6vh;
-}
-
-#back-button {
-  position: absolute;
-  bottom: 2vh;
-  left: 2vw;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
 #chat-page {
   display: flex;
   width: 100vw;
@@ -59,22 +27,30 @@ h1#Heading {
   font-family: "Bree Serif", serif;
 }
 
-.contact {
-  background: none;
-  border: none;
-  border-bottom: 1px solid #C2DFE3;
+#sidebar-name {
+  font-size: clamp(18px, 2.5vw, 26px);
   color: #C2DFE3;
-  font-family: "Bree Serif", serif;
-  font-size: clamp(14px, 1.5vw, 18px);
-  text-align: left;
-  padding: clamp(6px, 1vh, 10px);
-  cursor: pointer;
+  padding-bottom: 1vh;
+  border-bottom: 1px solid #C2DFE3;
+  margin-bottom: 1vh;
 }
 
-.contact.selected {
-  background-color: #C2DFE3;
-  color: #0B4F6C;
-  border-radius: 8px;
+#sidebar-section {
+  border-bottom: 1px solid rgba(194, 223, 227, 0.3);
+  padding: clamp(6px, 1vh, 12px) 0;
+}
+
+.sidebar-label {
+  font-size: clamp(11px, 1.2vw, 14px);
+  color: #179EB1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 3px;
+}
+
+.sidebar-value {
+  font-size: clamp(13px, 1.5vw, 17px);
+  color: #C2DFE3;
 }
 
 #chat-area {
@@ -126,6 +102,14 @@ h1#Heading {
   gap: clamp(6px, 1vw, 10px);
 }
 
+.message.mine {
+  flex-direction: row-reverse;
+}
+
+.message.mine .sender-name {
+  text-align: right;
+}
+
 .avatar {
   width: clamp(35px, 4vw, 45px);
   height: clamp(35px, 4vw, 45px);
@@ -167,6 +151,7 @@ h1#Heading {
   font-size: clamp(14px, 1.8vw, 18px);
   font-family: "Bree Serif", serif;
   background-color: white;
+  color: #0B4F6C;
 }
 
 #send-button {
@@ -180,27 +165,46 @@ h1#Heading {
   cursor: pointer;
 }
 
-#search-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-#search-icon {
-  position: absolute;
-  left: 10px;
-  width: clamp(15px, 2vw, 20px);
-  height: clamp(15px, 2vw, 20px);
-  pointer-events: none;
-}
-
-#search {
-  height: clamp(32px, 4vh, 40px);
+#leave-button {
+  margin-top: auto;
+  height: clamp(40px, 5vh, 55px);
   width: 100%;
-  border-radius: 10px;
-  border: none;
-  background-color: #179EB1;
-  padding-left: 35px;
+  font-size: clamp(14px, 1.8vw, 18px);
+  font-family: "Bree Serif", serif;
+  background-color: #A63446;
   color: #C2DFE3;
-  font-size: clamp(12px, 1.5vw, 16px);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#partner-status-active {
+  font-size: clamp(12px, 1.2vw, 14px);
+  font-family: "Bree Serif", serif;
+  color: #179EB1;
+}
+
+#partner-status-left {
+  font-size: clamp(12px, 1.2vw, 14px);
+  font-family: "Bree Serif", serif;
+  color: #A63446;
+}
+
+#system-message {
+  text-align: center;
+  font-size: clamp(12px, 1.2vw, 14px);
+  font-family: "Bree Serif", serif;
+  color: #A63446;
+  font-style: italic;
+  padding: 4px 0;
+}
+
+#message-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#send-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

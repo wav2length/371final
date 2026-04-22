@@ -124,7 +124,7 @@ function App() {
             {/* Matches and Chatting Pages */}
             <Route path="/matchmaking" element={<MatchLoading progressText={newProgress} />} />
             <Route path="/matches" element={<MatchesPage />} />
-            <Route path="/chat" element={<Chat />} />
+            <Route path="/chat" element={<Chat partner={partner} />} />
             <Route path="/login" element={<Login />} />
             </Routes>
         </BrowserRouter>
