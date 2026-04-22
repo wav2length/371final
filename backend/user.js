@@ -156,7 +156,7 @@ function add_user_career(user, career_JSON_object) {
 // This function is part of the onboarding process
 function add_user_join_reason(user, join_reason_JSON_object) {
     const join_reason = JSON.parse(join_reason_JSON_object)
-    const key = JOIN_REASON_MAP[career]
+    const key = JOIN_REASON_MAP[join_reason]
     if (key) {
         user[key] = 1
     }
@@ -180,4 +180,4 @@ function complete_user_onboarding(user) {
 }
 
 export { create_user, complete_user_onboarding, add_user_sexual_attraction, 
-         add_user_age, add_user_survey_response, add_user_career}
+         add_user_age, add_user_survey_response, add_user_join_reason, add_user_career}

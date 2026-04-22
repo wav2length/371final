@@ -7,6 +7,7 @@ import {
     add_user_career,
     add_user_sexual_attraction,
     add_user_survey_response,
+    add_user_join_reason,
     complete_user_onboarding
 } from './user.js'
 import { load_db, save_db, save_user, log_user_in } from './user_database.js'
@@ -389,7 +390,6 @@ io.on('connection', socket => {
 
         // Mark onboarding as complete
         complete_user_onboarding(user)
-        save_user(user)
 
         // Enter Matchmaking
         enterMatchMaking(socket, username)
