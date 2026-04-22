@@ -7,6 +7,7 @@ function create_user(onboarding1_JSON_object) {
 
     return {
         // Identity
+        username: firstName+lastName,
         firstName: firstName,
         lastName: lastName,
         gender: gender || '',

@@ -46,4 +46,4 @@ function log_user_in(firstNameJSON) {
     return user
 }
 
-export {load_db, save_db, log_user_in}
+export {load_db, save_db, save_user, log_user_in}
