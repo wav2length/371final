@@ -9,6 +9,7 @@ import Survey from './Surveys/Survey.jsx'
 import MatchesPage from './MatchesPage.jsx'
 import MatchLoading from './MatchLoading.jsx'
 import Chat from './Chat.jsx'
+import Login from './Login.jsx'
 import { useState, useEffect } from 'react'
 import { socket } from './socket.js'
 
@@ -121,6 +122,7 @@ function App() {
             <Route path="/matchmaking" element={<MatchLoading progressText={newProgress} />} />
             <Route path="/matches" element={<MatchesPage />} />
             <Route path="/chat" element={<Chat />} />
+            <Route path="/login" element={<Login />} />
             </Routes>
         </BrowserRouter>
     )
