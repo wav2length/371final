@@ -39,6 +39,14 @@ function create_user(onboarding1_JSON_object) {
         shopping: 0,
         yoga: 0,
 
+        // Why they joined: 1 if selected, 0 otherwise
+        joined_fun: 0,
+        joined_meet: 0,
+        joined_date: 0,
+        joined_relationship: 0,
+        joined_to_try: 0,
+        joined_other: 0,
+
         // Career flags: 1 if selected, 0 otherwise
         career_lawyer: 0,
         career_academia: 0,
