@@ -89,6 +89,16 @@ const CAREER_KEY_MAP = {
     'Undecided':        'career_undecided',
 }
 
+// Map onboarding4 strings (from Onboarding4.jsx) to user object keys
+const JOIN_REASON_MAP = {
+    'Joined for fun': 'joined_fun',
+    'Joined to meet people': 'joined_meet',
+    'Joined to date': 'joined_date',
+    'Joined to find a relationship': 'joined_relationship',
+    'Joined to try the app': 'joined_to_try',
+    'Joined for other reasons': 'joined_other'
+}
+
 // Maps survey topic strings (from Survey.jsx) to user object keys
 const SURVEY_KEY_MAP = {
     'playing sports':           'sports',
@@ -136,6 +146,17 @@ function add_user_survey_response(user, survey_JSON_object) {
 function add_user_career(user, career_JSON_object) {
     const career = JSON.parse(career_JSON_object)
     const key = CAREER_KEY_MAP[career]
+    if (key) {
+        user[key] = 1
+    }
+    return user
+}
+
+// Modifies the user join reason fields based on the information retireved from Onboarding4.jsx
+// This function is part of the onboarding process
+function add_user_join_reason(user, join_reason_JSON_object) {
+    const join_reason = JSON.parse(join_reason_JSON_object)
+    const key = JOIN_REASON_MAP[career]
     if (key) {
         user[key] = 1
     }
