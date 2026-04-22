@@ -9,7 +9,7 @@ function Onboarding3() {
 
   const handleNext = () => {
     socket.emit('store-onboarding3-results', JSON.stringify(age))
-    navigate('/survey')
+    navigate('/onboarding4')
   }
 
   return (
