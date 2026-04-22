@@ -10,7 +10,7 @@ function OnboardingComplete() {
   const navigate = useNavigate()
 
   const handleNext = () => {
-    // Notify server to start match making (disabled, need to move after onboarding finished)
+    // Notify server to start match making
     socket.emit('enter-matchmaking')
 
     // Navigate to matches

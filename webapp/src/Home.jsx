@@ -5,7 +5,7 @@ import './Home.css'
 import { socket } from './socket.js'
 import { useNavigate } from 'react-router-dom'
 
-
+// TODO: Implement routing to log in / sign up pages
 function Home() {
   const navigate = useNavigate()
 

@@ -6,7 +6,7 @@ import './MatchesPage.css'
 import { socket } from './socket.js'
 import { useNavigate } from 'react-router-dom'
 
-
+// TODO: need to update to pull the most compatible users from the server
 function MatchesPage() {
   const navigate = useNavigate()
   const [currentIndex, setCurrentIndex] = useState(0)

@@ -8,7 +8,6 @@ function Survey(setSurveyResponses) {
   const navigate = useNavigate()
   const [selectedRating, setSelectedRating] = useState(0)
   const [questionIdx, setQuestionIdx] = useState(0)
-
   const surveyTopics = [
     "playing sports",
     "watching sports",
@@ -28,6 +27,11 @@ function Survey(setSurveyResponses) {
     "shopping",
     "doing yoga"
   ];
+  const surveryResponses = new Array[length(surveyTopics)]
+
+  const handleNext = () => {
+    navigate('/career')
+  }
 
   return (
     <>
@@ -42,12 +46,12 @@ function Survey(setSurveyResponses) {
       <button id="next-button" className='bree-serif-regular' onClick={() => {
         if (questionIdx < surveyTopics.length - 1) {
           // TODO record answer
-          questionID = 'store' + questionIdx.replace(" ", "-") + 'results'
-          socket.emit(questionID, JSON.stringify(selectedRating))
+          surveryResponses[questionIdx] = selectedRating
+          socket.emit('store-survey-results', JSON.stringify(surveryResponses))
           setQuestionIdx(questionIdx + 1);
           setSelectedRating(null)
         } else {
-          navigate('/career')
+          handleNext
         }
       }}>
         Next Question

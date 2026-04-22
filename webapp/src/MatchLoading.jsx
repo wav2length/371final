@@ -19,6 +19,27 @@ function MatchLoading() {
   const [partner, setPartner] = useState('');
   const [messageHistory, setMessageHistory] = useState([])
 
+
+  return (
+    <>
+      {/* Design for loading page */}
+      <div id="loading-page">
+        <img id="large-logo-loading" src={largeLogo} alt="Large Logo" />
+        <p id="loading-message">Finding a match...</p>
+        <button id="next-button-loading" onClick={() => navigate('/matches') }>
+          View Matches
+        </button>
+        
+        <img id="waves-loading" src={waves} alt="Waves" />
+      </div>
+    </>
+  )
+}
+
+export default MatchLoading
+
+
+/*
   function loginWithUsername(username) {
     setUsername(username);
     socket.emit('login', username);
@@ -75,22 +96,4 @@ function MatchLoading() {
       // TODO show some sort of alert and navigate away from the chat
       return;
     });
-  });
-
-  return (
-    <>
-      {/* Design for loading page */}
-      <div id="loading-page">
-        <img id="large-logo-loading" src={largeLogo} alt="Large Logo" />
-        <p id="loading-message">Finding a match...</p>
-        <button id="next-button-loading" onClick={() => navigate('/matches') }>
-          View Matches
-        </button>
-        
-        <img id="waves-loading" src={waves} alt="Waves" />
-      </div>
-    </>
-  )
-}
-
-export default MatchLoading
+  }); */

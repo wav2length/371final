@@ -10,6 +10,8 @@ function Onboarding1({setUsername, setPronouns}) {
   const [firstName, setFirstNameLocal] = useState('')
   // Define the lastName state variable and the set function for it
   const [lastName, setLastNameLocal] = useState('')
+  // Define the gender state variable and the set function for it
+  const [gender, setGender] = useState('')
   // Define the pronouns state variable and the set function for it
   const [pronouns, setPronounsLocal] = useState('')
 
@@ -41,6 +43,8 @@ function Onboarding1({setUsername, setPronouns}) {
         <input value={firstName} onChange={e => setFirstNameLocal(e.target.value)} id="input-text" type="text" placeholder="Enter your first name here..." required/>
         <p id="subheading-board1">Last Name</p>
         <input value={lastName} onChange={e => setLastNameLocal(e.target.value)} id="input-text" type="text" placeholder="Enter your last name here..."/>
+        <p id="subheading-board1">Gender</p>
+        <input value={gender} onChange={e => setPronounsLocal(e.target.value)} id="input-text" type="text" placeholder="Enter your gender here... " required/>
         <p id="subheading-board1">Pronouns</p>
         <input value={pronouns} onChange={e => setPronounsLocal(e.target.value)} id="input-text" type="text" placeholder="Enter your pronouns here... "/>
       </div>
