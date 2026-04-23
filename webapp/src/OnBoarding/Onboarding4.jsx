@@ -63,7 +63,7 @@ const handleClick = (field) => {
         {fields.map((field) => (
             <button
             key={field}
-            className={selectedJoinReason === field ? 'field-btn-onboarding selected' : 'field-btn-onboarding'}
+            className={selectedJoinReason === field ? 'onboarding4-field-btn selected' : 'onboarding4-field-btn'}
             onClick={() => handleClick(field)}
             >
             {field}
