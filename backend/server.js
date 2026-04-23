@@ -315,6 +315,7 @@ io.on('connection', socket => {
         // Upadate user profile with new information
         add_user_sexual_attraction(user, data)
         console.log(`Stored sexuality data for ${username}`)
+        socket.emit('onboarding2-success')
     })
 
     socket.on('store-onboarding3-results', data =>{
@@ -331,6 +332,7 @@ io.on('connection', socket => {
         // Upadate user profile with new information
         add_user_age(user, data)
         console.log(`Stored age data for ${username}`)
+        socket.emit('onboarding3-success')
     })
 
     socket.on('store-onboarding4-results', data => {
@@ -347,6 +349,7 @@ io.on('connection', socket => {
         // Upadate user profile with new information
         add_user_join_reason(user, data)
         console.log(`Stored join reason data for ${username}`)
+        socket.emit('onboarding4-success')
     })
 
     socket.on('store-survey-results', data => {
