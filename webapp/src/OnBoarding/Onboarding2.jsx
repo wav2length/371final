@@ -43,16 +43,16 @@ function Onboarding2() {
         <h1 id="onboarding2-Heading-board2">Tell Us About Yourself</h1>
         <h2 id="onboarding2-subheading-board2">What gender are you attracted to?</h2>
         <div id="onboarding2-options-container">
-             <button id={selected === 'female' ? 'clicked-option' : 'unclicked-option'}
+             <button id={selected === 'female' ? 'onboarding2-clicked-option' : 'onboarding2-unclicked-option'}
                 onClick={() => { setSelected('female'); setError('') }}>
                 Female
             </button>
 
-            <button id={selected === 'male' ? 'clicked-option' : 'unclicked-option'}
+            <button id={selected === 'male' ? 'onboarding2-clicked-option' : 'onboarding2-unclicked-option'}
                 onClick={() => { setSelected('male'); setError('') }}>
                 Male
             </button>
-            <button id={selected === 'no-preference' ? 'clicked-option' : 'unclicked-option'}
+            <button id={selected === 'no-preference' ? 'onboarding2-clicked-option' : 'onboarding2-unclicked-option'}
                 onClick={() => { setSelected('no-preference'); setError('') }}>
                 No preference
             </button>
