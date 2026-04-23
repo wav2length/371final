@@ -6,7 +6,7 @@ import { socket } from './socket.js'
 import { useNavigate } from 'react-router-dom'
 
 
-function MatchLoading({progress, setPartner}) {
+function MatchLoading({progressText, setPartner}) {
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -16,7 +16,9 @@ function MatchLoading({progress, setPartner}) {
       setPartner(partner);
       navigate('/chat')
     });
-  });
+
+    return () => socket.off('enter-chat')
+  }, []);
   
 
   return (
@@ -24,7 +26,7 @@ function MatchLoading({progress, setPartner}) {
       {/* Design for loading page */}
       <div id="loading-page">
         <img id="large-logo-loading" src={largeLogo} alt="Large Logo" />
-        <p id="loading-message">{progress && progress.message || "Finding a match..."}</p>
+        <p id="loading-message">{progressText?.message || "Finding a match..."}</p>
         <button id="next-button-loading" style={{visibility: 'hidden'}} onClick={() => navigate('/matches') }>
           View Matches
         </button>

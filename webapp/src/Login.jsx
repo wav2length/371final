@@ -52,7 +52,7 @@ function Login() {
         <h1 id="heading-login">Welcome Back</h1>
         <p id="subheading-login">First Name</p>
         <input
-          id="input-text-login"
+          id="input-firstname-login"
           type="text"
           placeholder="Enter your first name..."
           value={firstName}
@@ -62,7 +62,7 @@ function Login() {
         />
         <p id="subheading-login">Last Name</p>
         <input
-          id="input-text-login"
+          id="input-lastname-login"
           type="text"
           placeholder="Enter your last name..."
           value={lastName}

@@ -17,19 +17,22 @@ function Onboarding1() {
 
   // Funtion that handles when the user clicks the next button
   const handleNext = () => {
-    // Check if last name was filled out
-    if (lastName === ""){
-      setLastName("Last name not given")
-    }
-    // Check if pronouns were filled out
-    if(pronouns === ""){
-      setPronouns("No stated pronouns")
-    }
+    // Ensures that there is some data
+    const finalLastName = lastName || "ERROR"
+    const finalPronouns = pronouns || "No stated pronouns"
+    setLastName(finalLastName)
+    setPronouns(finalPronouns)
+    
     // Send information back to the server
-    socket.emit('store-onboarding1-results', JSON.stringify({firstName, lastName, gender, pronouns}))
+    socket.emit('store-onboarding1-results', JSON.stringify({
+      firstName,
+      lastName: finalLastName,
+      gender,
+      pronouns: finalPronouns
+    }))
 
     // Go to the next step of onboarding
-    navigate('/Onboarding2')
+    navigate('/onboarding2')
   }
 
   return (

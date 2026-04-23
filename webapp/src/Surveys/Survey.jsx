@@ -29,9 +29,9 @@ function Survey() {
   ];
   const [surveyResponses, setSurveyResponses] = useState([])
 
-  const handleNext = () => {
+  const handleNext = (finalResponses) => {
     const surveyObj = surveyTopics.reduce((obj, key, idx) => {
-      obj[key] = surveyResponses[idx];
+      obj[key] = finalSurveyResponses[idx];
       return obj;
     }, {});
     socket.emit('store-survey-results', JSON.stringify(surveyObj))
@@ -51,14 +51,13 @@ function Survey() {
       <button id="next-button" className='bree-serif-regular' onClick={() => {
         // shh the database technically has ratings out of 10 so I'm just hacking ts
         // hi polsley
-        if (selectedRating)
-          setSurveyResponses([...surveyResponses, selectedRating.valueOf() * 2])
-        else
-          setSurveyResponses([...surveyResponses, 1])
-        setQuestionIdx(questionIdx + 1);
+        const newRating = selectedRating ? selectedRating * 2 : 1
+        const updatedResponses = [...surveyResponses, newRating]
+        setSurveyResponses(updatedResponses)
+        setQuestionIdx(questionIdx + 1)
         setSelectedRating(null)
         if (questionIdx >= surveyTopics.length - 1) {
-          handleNext()
+          handleNext(updatedResponses)  // pass it directly
         }
       }}>
         Next Question

@@ -72,32 +72,42 @@ function App() {
     socket.on('pong', () => {
       // expected to be more, socket.io sends multiple pings during testing
       setPong((pong) => pong + 1);
-    });
+    })
 
     socket.on('login-success', () => {
       console.log(`Successfully registered as ${username}`);
-    });
+    })
 
-    socket.on('enter-matchmaking-success', () => {
+    socket.on('enter-matchmaking-successful', () => {
       // TODO navigate to a progress page
       return;
-    });
+    })
     socket.on('matchmaking-progress', update => {
       // useState is weird with objects so I don't think this actually works but I'll be responsible for fixing it later
       setNewProgress(update)
       return;
-    });
+    })
     socket.on('matchmaking-failure', () => {
       // TODO show an alert
       return;
-    });
+    })
     socket.on('receive-message', message => {
       setMessageHistory([...messageHistory, message]);
     });
     socket.on('partner-leave-chat', () => {
       // TODO show some sort of alert and navigate away from the chat
-      return;
+      return
+
     });
+    return () => {
+    socket.off('pong')
+    socket.off('login-success')
+    socket.off('enter-matchmaking-success')
+    socket.off('matchmaking-progress')
+    socket.off('matchmaking-failure')
+    socket.off('receive-message')
+    socket.off('partner-leave-chat')
+    }
   },[]);
 
     return (

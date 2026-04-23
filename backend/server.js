@@ -11,7 +11,7 @@ import {
     complete_user_onboarding
 } from './user.js'
 import { load_db, save_db, save_user, log_user_in } from './user_database.js'
-import { socket } from '../webapp/src/socket.js'
+// import { socket } from '../webapp/src/socket.js'
 
 
 //
@@ -157,7 +157,7 @@ async function makeMatch() {
             attributes2 = user_profiles.get(partner2)
             wouldDate1 = attributes2.genderPreference == null || attributes2.genderPreference == attributes1.gender
             wouldDate2 = attributes1.genderPreference == null || attributes1.genderPreference == attributes2.gender
-        } while (partner1 == partner2 || (preferenceRetries < 20 || (!wouldDate1 && !wouldDate2)));
+        } while (partner1 == partner2 || (preferenceRetries < 20 && (!wouldDate1 || !wouldDate2)));
 
         // Get attributes from both partners then merge
         const data1 = Object.values(attributes1).slice(7, 52)
@@ -172,6 +172,11 @@ async function makeMatch() {
 
         const result = await response.json();
         prediction = result.prediction;
+    }
+
+    if (prediction < .8){
+        console.log(`Could not find a good match above 0.8 threshold`)
+        return
     }
 
     // Remove both users from the matchmaking queue since they've matched

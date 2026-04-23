@@ -1,9 +1,9 @@
 import { use, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { socket } from '../socket.js'
-import '../Career.css'
+import './Onboarding4.css'
 
-function Career() {
+function Onboarding4() {
   const [selectedJoinReason, setSelectedJoinReason] = useState(null)
   const navigate = useNavigate()
   
@@ -53,4 +53,4 @@ const handleClick = (field) => {
   )
 }
 
-export default Career
+export default Onboarding4

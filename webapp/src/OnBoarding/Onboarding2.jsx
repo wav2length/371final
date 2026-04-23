@@ -3,7 +3,7 @@ import './Onboarding2.css'
 import { socket } from '../socket.js'
 import { useNavigate } from 'react-router-dom'
 
-function Onboarding2(setGenderPreference) {
+function Onboarding2() {
   const navigate = useNavigate()
   const [selected, setSelected] = useState(null)
 
