@@ -42,6 +42,17 @@ h1#Heading-board1 {
   padding-bottom: 1vh;
 }
 
+#gender-dropdown {
+  height: clamp(45px, 6vh, 60px);
+  width: min(400px, 70vw);
+  font-size: clamp(14px, 2vw, 20px);
+  padding-left: 10px;
+  color: #A63446;
+  background-color: #F4A5AE;
+  border: 2px solid #A63446;
+  border-radius: 15px;
+}
+
 #input-text {
   height: clamp(45px, 6vh, 60px);
   width: min(400px, 70vw);
