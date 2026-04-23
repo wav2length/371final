@@ -366,6 +366,7 @@ io.on('connection', socket => {
         // Upadate user profile with new information
         add_user_survey_response(user, data)
         console.log(`Stored survey data for ${username}`)
+        socket.emit('survey-success')
     })
 
     socket.on('store-career-results', data => {
@@ -382,6 +383,7 @@ io.on('connection', socket => {
         // Upadate user profile with new information
         add_user_career(user, data)
         console.log(`Stored career data for ${username}`)
+        socket.emit('career-success')
     })
 
     socket.on('enter-matchmaking', async () => {

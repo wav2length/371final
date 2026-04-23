@@ -36,7 +36,7 @@ function save_user(user) {
 function log_user_in(usernameJSON) {
     const username = JSON.parse(usernameJSON)
     const users = load_db()
-    const user = users.find(u => u.username === user.username)
+    const user = users.find(u => u.username === username)
 
     if (!user) {
         console.log(`No user found with username: ${username}`)
