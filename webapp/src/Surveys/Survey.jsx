@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { socket } from '../socket.js'
 import RatingComponent from '../Components/RatingComponent.jsx'
@@ -6,8 +6,12 @@ import './Survey.css'
 
 function Survey() {
   const navigate = useNavigate()
-  const [selectedRating, setSelectedRating] = useState(0)
+  const [selectedRating, setSelectedRating] = useState(null)
   const [questionIdx, setQuestionIdx] = useState(0)
+  const [surveyResponses, setSurveyResponses] = useState([])
+  const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  
   const surveyTopics = [
     "playing sports",
     "watching sports",
@@ -27,15 +31,45 @@ function Survey() {
     "shopping",
     "doing yoga"
   ];
-  const [surveyResponses, setSurveyResponses] = useState([])
 
-  const handleNext = (finalResponses) => {
+  useEffect(() => {
+    // Wait for server confirmation before navigating
+    socket.on('survey-success', () => {
+      setIsLoading(false)
+      navigate('/career')
+    })
+
+    return () => socket.off('survey-success')
+  }, [navigate])
+
+  const handleSubmit = (finalResponses) => {
     const surveyObj = surveyTopics.reduce((obj, key, idx) => {
-      obj[key] = finalSurveyResponses[idx];
-      return obj;
-    }, {});
+      obj[key] = finalResponses[idx]
+      return obj
+    }, {})
+    setIsLoading(true)
     socket.emit('store-survey-results', JSON.stringify(surveyObj))
-    navigate('/career')
+  }
+
+  const handleNext = () => {
+    if (!selectedRating) {
+      setError('Please select a rating before continuing.')
+      return
+    }
+
+    setError('')
+    // shh the database technically has ratings out of 10 so I'm just hacking ts
+    // hi polsley
+    const newRating = selectedRating * 2  // scale 1-5 to 1-10 for the DB
+    const updatedResponses = [...surveyResponses, newRating]
+    setSurveyResponses(updatedResponses)
+    setSelectedRating(null)
+
+    if (questionIdx >= surveyTopics.length - 1) {
+      handleSubmit(updatedResponses)
+    } else {
+      setQuestionIdx(questionIdx + 1)
+    }
   }
 
   return (
@@ -46,21 +80,11 @@ function Survey() {
       <div id="main-area">
         <h1 id="Heading-survey1">How interested are you in:</h1>
         <h1 id="Heading-survey1">{surveyTopics[questionIdx]}</h1>
-        <RatingComponent selected={selectedRating} setSelected={setSelectedRating} />
+        <RatingComponent selected={selectedRating} setSelected={ rating => {setSelectedRating(rating); setError('') }}/>
+        {error && <p style={{ color: 'red', marginTop: '12px', fontSize: '0.85rem' }}>{error}</p>}
       </div>
-      <button id="next-button" className='bree-serif-regular' onClick={() => {
-        // shh the database technically has ratings out of 10 so I'm just hacking ts
-        // hi polsley
-        const newRating = selectedRating ? selectedRating * 2 : 1
-        const updatedResponses = [...surveyResponses, newRating]
-        setSurveyResponses(updatedResponses)
-        setQuestionIdx(questionIdx + 1)
-        setSelectedRating(null)
-        if (questionIdx >= surveyTopics.length - 1) {
-          handleNext(updatedResponses)  // pass it directly
-        }
-      }}>
-        Next Question
+      <button id="next-button" className='bree-serif-regular' onClick={handleNext} disabled={isLoading}>
+        {isLoading ? 'Saving...' : questionIdx >= surveyTopics.length - 1 ? 'Finish' : 'Next Question'}
       </button>
     </>
   )
