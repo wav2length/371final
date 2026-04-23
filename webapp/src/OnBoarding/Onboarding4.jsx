@@ -43,7 +43,7 @@ const handleNext = () => {
   setError('')
   // Waiting on server response
   setIsLoading(true)
-  // Sending information to server to stor
+  // Sending information to server to store
   socket.emit('store-onboarding4-results', JSON.stringify(selectedJoinReason))
 }
 
