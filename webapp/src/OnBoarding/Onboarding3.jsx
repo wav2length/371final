@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Onboarding3.css'
 import { socket } from '../socket.js'
 import { useNavigate } from 'react-router-dom'
@@ -47,8 +47,9 @@ function Onboarding3() {
     }
 
     setError('')
-    // Set 
+    // Waiting for server response set true
     setIsLoading(true)
+    // Send data to storage
     socket.emit('store-onboarding3-results', JSON.stringify(parsedAge))
   }
 
@@ -61,15 +62,18 @@ function Onboarding3() {
         <h1 id="Heading-board3">Tell Us About Yourself</h1>
         <h2 id="subheading-board3">How old are you?</h2>
         <div id="options-container">
-            <input id="input-num" type="number" min="18" max="120" value={age} onChange={(e) => {setAge(e.target.value)}}
-              onBlur={(e) => {
-                if (age < 18) setAge(18)
-                if (age > 120) setAge(120)
-              }}/>  
+            <input id="input-num" type="number" min="18" max="120" value={age} onChange={(e) => { setAge(e.target.value); setError('') }}
+              onBlur={() => {
+              const parsed = parseInt(age, 10)
+              if (isNaN(parsed) || parsed < 18) setAge(18)
+              else if (parsed > 120) setAge(120)
+              else setAge(parsed)
+            }}/>  
         </div>
+        {error && <p style={{ color: 'red', marginTop: '12px', fontSize: '0.85rem' }}>{error}</p>}
       </div>
-      <button id="next-button" className='bree-serif-regular' onClick={handleNext}>
-        Next Question
+      <button id="next-button" className='bree-serif-regular' onClick={handleNext} disabled={isLoading}>
+        {isLoading ? 'Saving...' : 'Next Question'}
       </button>
     </>
   )
