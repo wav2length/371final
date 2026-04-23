@@ -83,6 +83,11 @@ function Chat({ partner }) {
     }))
 }
 
+const getDisplayName = (sender) => {
+  if (sender === 'You') return 'You'
+  return info ? `${info.firstName} ${info.lastName}` : sender
+}
+
   const info = partner?.info
   const topInterests = getTopInterests(info)
 
@@ -151,7 +156,7 @@ function Chat({ partner }) {
                     {msg.sender.split(' ').map(n => n[0]).join('')}
                   </div>
                   <div>
-                    <p className="sender-name">{msg.sender}</p>
+                    <p className="sender-name">{getDisplayName(msg.sender)}</p>
                     <p className="message-content">{msg.content}</p>
                   </div>
                 </div>
