@@ -1,4 +1,4 @@
-body, #root {
+body, #onboarding4-root {
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -6,7 +6,7 @@ body, #root {
   flex-direction: column;
 }
 
-#main-area-career {
+#onboarding4-main-area-career {
   height: clamp(600px, 70vh, 800px);
   width: min(1000px, 90vw);
   background-color: #C2DFE3;
@@ -20,7 +20,7 @@ body, #root {
   overflow-y: auto;
 }
 
-h1#Heading-career {
+h1#onboarding4-Heading-career {
   font-size: clamp(28px, 4vw, 48px);
   color: #A63446;
   font-family: "Bree Serif", serif;
@@ -28,7 +28,7 @@ h1#Heading-career {
   line-height: 1.2;
 }
 
-#subheading-career {
+#onboarding4-subheading-career {
   font-size: clamp(16px, 2vw, 24px);
   color: #A63446;
   font-family: "Bree Serif", serif;
@@ -38,7 +38,7 @@ h1#Heading-career {
   margin-top: 2vh;
 }
 
-#fields-container {
+#onboarding4-fields-container {
   display: flex;
   flex-wrap: wrap;
   gap: clamp(8px, 1.5vw, 15px);
@@ -63,7 +63,7 @@ h1#Heading-career {
   color: #C2DFE3;
 }
 
-#next-button-career {
+#onboarding4-next-button-career {
   height: clamp(55px, 7vh, 75px);
   width: min(350px, 70vw);
   font-size: clamp(20px, 3vw, 35px);
@@ -77,7 +77,7 @@ h1#Heading-career {
   flex-shrink: 0;
 }
 
-#progress-container-career {
+#onboarding4-progress-container-career {
   width: min(900px, 85vw);
   height: clamp(20px, 2.5vh, 30px);
   background-color: #C2DFE3;
@@ -88,7 +88,7 @@ h1#Heading-career {
   flex-shrink: 0;
 }
 
-#progress-bar-career {
+#onboarding4-progress-bar-career {
   width: 80%;
   height: 100%;
   background: linear-gradient(to right, #C2DFE3, #179EB1);

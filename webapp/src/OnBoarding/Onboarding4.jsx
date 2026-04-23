@@ -54,12 +54,12 @@ const handleClick = (field) => {
 
   return (
     <>
-    <div id="progress-container-career">
-        <div id="progress-bar-career"></div>
+    <div id="onboarding4-progress-container-career">
+        <div id="onboarding4-progress-bar-career"></div>
     </div>
-      <div id="main-area-career">
-        <h1 id="Heading-career">Why did you join Wavelength?</h1>
-        <div id="fields-container">
+      <div id="onboarding4-main-area-career">
+        <h1 id="onboarding4-Heading-career">Why did you join Wavelength?</h1>
+        <div id="onboarding4-fields-container">
         {fields.map((field) => (
             <button
             key={field}
@@ -72,7 +72,7 @@ const handleClick = (field) => {
         </div>
         {error && <p style={{ color: 'red', marginTop: '12px', fontSize: '0.85rem' }}>{error}</p>}
       </div>
-      <button id="next-button-career" className='bree-serif-regular' onClick={handleNext} disabled={isLoading}>
+      <button id="onboarding4-next-button-career" className='bree-serif-regular' onClick={handleNext} disabled={isLoading}>
         {isLoading ? 'Saving...' : 'Next Question'}
       </button>
     </>
