@@ -58,7 +58,7 @@ h1#onboarding4-Heading-career {
   cursor: pointer;
 }
 
-.onboarding4-field-btn-.selected {
+.onboarding4-field-btn.selected {
   background-color: #A63446;
   color: #C2DFE3;
 }
