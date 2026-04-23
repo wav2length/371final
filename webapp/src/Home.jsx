@@ -1,17 +1,13 @@
-import { use, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import largeLogo from './Assets/large-logo.png'
 import waves from './Assets/waves.png'
 import './Home.css'
-import { socket } from './socket.js'
-import { useNavigate } from 'react-router-dom'
 
-// TODO: Implement routing to log in / sign up pages
 function Home() {
   const navigate = useNavigate()
 
   return (
     <>
-      {/* Design for home page */}
       <div id="home-page">
         <img id="large-logo" src={largeLogo} alt="Large Logo" />
         <p id='subtitle'>the dating app that </p>
