@@ -109,7 +109,7 @@ h1#login-heading {
   width: min(350px, 70vw);
   font-size: clamp(16px, 2vw, 24px);
   color: #A63446;
-  background-color: transparent;
+  background-color: #C2DFE3;
   border: 2px solid #A63446;
   border-radius: 15px;
   cursor: pointer;
