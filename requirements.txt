@@ -2,3 +2,6 @@ pandas
 scikit-learn
 numpy
 uvicorn
+pickle
+fastapi
+pydantic

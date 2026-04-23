@@ -10,7 +10,7 @@ import {
     add_user_join_reason,
     complete_user_onboarding
 } from './user.js'
-import { load_db, save_db, save_user, log_user_in } from './user_database.js'
+import { load_db, save_db, save_user, log_user_in, get_usernames } from './user_database.js'
 // import { socket } from '../webapp/src/socket.js'
 
 
@@ -227,6 +227,13 @@ async function enterMatchMaking(socket, username) {
     // Update client with status
     socket.emit('enter-matchmaking-successful')
 
+    // Mock some people in the queue (dev only)
+    if (true) {
+        for (let i = 0; i < 1; i++) {
+            mockUser()
+        }
+    }
+
     // Logging
     console.log(`${username} entered matchmaking queue`)
     console.log(`Matchmaking queue size: ${matchmaking_queue.size}`)
@@ -245,6 +252,26 @@ async function enterMatchMaking(socket, username) {
         console.log(`Matchmaking failed for ${username}`)
         socket.emit('matchmaking-failure') // ALONE FOREVER ONCE AGAIN :L
     }
+}
+
+function mockUser() {
+    const users = get_usernames()
+    const inactiveUsers = users.filter(username => !matchmaking_queue.has(username))
+    const randomUsername = inactiveUsers[Math.floor(Math.random() * inactiveUsers.length)]
+    const existingUser = log_user_in(JSON.stringify(randomUsername))
+
+    if(!existingUser){
+        console.warn(`Failed log in for ${randomUsername}`)
+        return
+    }
+
+    // Load user from memory
+    users_online.set(Math.floor(Math.random() * 1000000000), randomUsername);
+    user_profiles.set(randomUsername, existingUser)
+
+    // Enter matchmaking
+    matchmaking_queue.add(randomUsername)
+    console.log(`${randomUsername} entered matchmaking queue`)
 }
 
 //

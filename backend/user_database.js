@@ -46,4 +46,10 @@ function log_user_in(usernameJSON) {
     return user
 }
 
-export {load_db, save_db, save_user, log_user_in}
+// Gets all usernames for mocking
+function get_usernames() {
+    const users = load_db()
+    return users.map(user => user.username)
+}
+
+export {load_db, save_db, save_user, log_user_in, get_usernames}
