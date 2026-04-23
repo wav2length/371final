@@ -84,7 +84,7 @@ function Survey() {
         {error && <p style={{ color: 'red', marginTop: '12px', fontSize: '0.85rem' }}>{error}</p>}
       </div>
       <button id="next-button" className='bree-serif-regular' onClick={handleNext} disabled={isLoading}>
-        {isLoading ? 'Saving...' : questionIdx >= surveyTopics.length - 1 ? 'Finish' : 'Next Question'}
+        {isLoading ? 'Saving...' : (questionIdx >= surveyTopics.length - 1) ? 'Finish' : 'Next Question'}
       </button>
     </>
   )
