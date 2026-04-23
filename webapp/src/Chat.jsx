@@ -131,8 +131,8 @@ const getDisplayName = (sender) => {
       </div>
 
       {/* Right chat area */}
-      <div id="chat-chat-area">
-        <div id="chat-chat-header">
+      <div id="chat-area">
+        <div id="chat-header">
           <h2>{info ? `${info.firstName} ${info.lastName}` : 'Chat'}</h2>
           {/* Show a status indicator if partner has left */}
           {partnerLeft

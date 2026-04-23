@@ -1,4 +1,4 @@
-body, #root {
+body, #login-root {
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -6,7 +6,7 @@ body, #root {
   flex-direction: column;
 }
 
-#main-area-login {
+#login-main-area {
   height: clamp(400px, 55vh, 600px);
   width: min(700px, 90vw);
   background-color: #C2DFE3;
@@ -19,7 +19,7 @@ body, #root {
   padding: clamp(40px, 6vh, 80px) clamp(30px, 5vw, 60px);
 }
 
-h1#heading-login {
+h1#login-heading {
   font-size: clamp(28px, 4vw, 48px);
   color: #A63446;
   font-family: "Bree Serif", serif;
@@ -28,7 +28,7 @@ h1#heading-login {
   margin-bottom: 2vh;
 }
 
-#subheading-login {
+#login-subheading {
   font-size: clamp(16px, 2vw, 24px);
   color: #A63446;
   font-family: "Bree Serif", serif;
@@ -37,7 +37,7 @@ h1#heading-login {
   margin-top: 2vh;
 }
 
-#input-text-login {
+#login-input-text {
   height: clamp(45px, 6vh, 65px);
   width: 100%;
   font-size: clamp(16px, 2vw, 22px);
@@ -51,7 +51,7 @@ h1#heading-login {
   margin-top: 1vh;
 }
 
-#input-firstname-login {
+#login-input-firstname {
   height: clamp(45px, 6vh, 65px);
   width: 100%;
   font-size: clamp(16px, 2vw, 22px);
@@ -65,7 +65,7 @@ h1#heading-login {
   margin-top: 1vh;
 }
 
-#input-lastname-login {
+#login-input-lastname {
   height: clamp(45px, 6vh, 65px);
   width: 100%;
   font-size: clamp(16px, 2vw, 22px);
@@ -79,7 +79,7 @@ h1#heading-login {
   margin-top: 1vh;
 }
 
-#error-text-login {
+#login-error-text {
   font-size: clamp(14px, 1.8vw, 18px);
   color: #A63446;
   font-family: "Bree Serif", serif;
@@ -104,7 +104,7 @@ h1#heading-login {
   cursor: not-allowed;
 }
 
-#new-user-button {
+#login-new-user-button {
   height: clamp(45px, 6vh, 65px);
   width: min(350px, 70vw);
   font-size: clamp(16px, 2vw, 24px);

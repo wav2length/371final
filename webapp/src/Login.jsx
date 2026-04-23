@@ -48,11 +48,11 @@ function Login() {
 
   return (
     <>
-      <div id="main-area-login">
-        <h1 id="heading-login">Welcome Back</h1>
-        <p id="subheading-login">First Name</p>
+      <div id="login-main-area">
+        <h1 id="login-heading">Welcome Back</h1>
+        <p id="login-subheading">First Name</p>
         <input
-          id="input-firstname-login"
+          id="login-input-firstname"
           type="text"
           placeholder="Enter your first name..."
           value={firstName}
@@ -60,9 +60,9 @@ function Login() {
           // Submitting with Enter key
           onKeyDown={e => e.key === 'Enter' && handleLogin()}
         />
-        <p id="subheading-login">Last Name</p>
+        <p id="login-subheading">Last Name</p>
         <input
-          id="input-lastname-login"
+          id="login-input-lastname"
           type="text"
           placeholder="Enter your last name..."
           value={lastName}
@@ -71,7 +71,7 @@ function Login() {
         />
 
         {/* Only show error message if there is one */}
-        {error && <p id="error-text-login">{error}</p>}
+        {error && <p id="login-error-text">{error}</p>}
       </div>
 
       <button
@@ -86,7 +86,7 @@ function Login() {
 
       {/* New user path — skip login and go straight to onboarding */}
       <button
-        id="new-user-button"
+        id="login-new-user-button"
         className='bree-serif-regular'
         onClick={() => navigate('/onboarding1')}
       >

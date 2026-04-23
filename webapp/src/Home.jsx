@@ -8,13 +8,13 @@ function Home() {
 
   return (
     <>
-      <div id="home-page">
-        <img id="large-logo" src={largeLogo} alt="Large Logo" />
-        <p id='subtitle'>the dating app that </p>
-        <p id='subtitle'>understands YOU first.</p>
-        <button id='enter-button' onClick={() => {navigate('/login')}}>
+      <div id="home-home-page">
+        <img id="home-large-logo" src={largeLogo} alt="Large Logo" />
+        <p id="home-subtitle">the dating app that </p>
+        <p id="home-subtitle">understands YOU first.</p>
+        <button id="home-enter-button" onClick={() => {navigate('/login')}}>
           find someone on your wavelength today!</button>
-        <img id="waves" src={waves} alt="Waves" />
+        <img id="home-waves" src={waves} alt="Waves" />
       </div>
     </>
   )

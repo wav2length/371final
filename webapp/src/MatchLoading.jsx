@@ -47,12 +47,12 @@ function MatchLoading({progressText, setPartner}) {
   if (disconnected) {
       return (
         <div id="loading-page">
-          <img id="large-logo-loading" src={largeLogo} alt="Large Logo" />
+          <img id="loading-large-logo" src={largeLogo} alt="Large Logo" />
           <p id="loading-message">Connection lost. Please check your internet and try again.</p>
-          <button id="next-button-loading" onClick={() => navigate('/')}>
+          <button id="loading-next-button" onClick={() => navigate('/')}>
             Go Home
           </button>
-          <img id="waves-loading" src={waves} alt="Waves" />
+          <img id="loading-waves" src={waves} alt="Waves" />
         </div>
       )
     }
@@ -60,10 +60,10 @@ function MatchLoading({progressText, setPartner}) {
   if (failed) {
       return (
         <div id="loading-page">
-          <img id="large-logo-loading" src={largeLogo} alt="Large Logo" />
+          <img id="loading-large-logo" src={largeLogo} alt="Large Logo" />
           <p id="loading-message">We couldn't find a match right now. Try again in a little while!</p>
           <button
-            id="next-button-loading"
+            id="loading-next-button"
             onClick={() => {
               setFailed(false)
               socket.emit('enter-matchmaking')
@@ -71,19 +71,19 @@ function MatchLoading({progressText, setPartner}) {
           >
             Try Again
           </button>
-          <button id="next-button-loading" onClick={() => navigate('/')}>
+          <button id="loading-next-button" onClick={() => navigate('/')}>
             Go Home
           </button>
-          <img id="waves-loading" src={waves} alt="Waves" />
+          <img id="loading-waves" src={waves} alt="Waves" />
         </div>
       )
     }
 
   return (
       <div id="loading-page">
-        <img id="large-logo-loading" src={largeLogo} alt="Large Logo" />
+        <img id="loading-large-logo" src={largeLogo} alt="Large Logo" />
         <p id="loading-message">{progressText?.message || 'Finding a match...'}</p>
-        <img id="waves-loading" src={waves} alt="Waves" />
+        <img id="loading-waves" src={waves} alt="Waves" />
       </div>
     )
   }
