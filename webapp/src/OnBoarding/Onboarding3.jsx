@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Onboarding3.css'
 import { socket } from '../socket.js'
 import { useNavigate } from 'react-router-dom'
@@ -6,10 +6,51 @@ import { useNavigate } from 'react-router-dom'
 function Onboarding3() {
   const navigate = useNavigate()
   const [age, setAge] = useState(18)
+  const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(() => {
+    // Server confirmed the user object was created, wait till succesful and then proceed to onboarding2
+    socket.on('onboarding3-success', () => {
+      // No longer loading
+      setIsLoading(false)
+      // Navigate to next step
+      navigate('/onboarding4')
+    })
+
+    // Clean the listener
+    // Prevents portalling the listener to the moon
+    return () => {
+      socket.off('onboarding3-success')
+    }
+  }, [navigate])
 
   const handleNext = () => {
-    socket.emit('store-onboarding3-results', JSON.stringify(age))
-    navigate('/onboarding4')
+    // Get Age
+    const parsedAge = parseInt(age, 10)
+    
+    // Age not right
+    if (isNaN(parsedAge)) {
+      setError('Please enter a valid age.')
+      return
+    }
+
+    // Close enough
+    if (parsedAge < 18) {
+      setError('You must be at least 18 to use Wavelength.')
+      return
+    }
+
+    if (parsedAge > 120) {
+      setError('Real funny lying to the Ministry of Truth, now face the wall')
+      return
+    }
+
+    setError('')
+    // Waiting for server response set true
+    setIsLoading(true)
+    // Send data to storage
+    socket.emit('store-onboarding3-results', JSON.stringify(parsedAge))
   }
 
   return (
@@ -21,15 +62,18 @@ function Onboarding3() {
         <h1 id="Heading-board3">Tell Us About Yourself</h1>
         <h2 id="subheading-board3">How old are you?</h2>
         <div id="options-container">
-            <input id="input-num" type="number" min="18" max="120" value={age} onChange={(e) => {setAge(e.target.value)}}
-              onBlur={(e) => {
-                if (age < 18) setAge(18)
-                if (age > 120) setAge(120)
-              }}/>  
+            <input id="input-num" type="number" min="18" max="120" value={age} onChange={(e) => { setAge(e.target.value); setError('') }}
+              onBlur={() => {
+              const parsed = parseInt(age, 10)
+              if (isNaN(parsed) || parsed < 18) setAge(18)
+              else if (parsed > 120) setAge(120)
+              else setAge(parsed)
+            }}/>  
         </div>
+        {error && <p style={{ color: 'red', marginTop: '12px', fontSize: '0.85rem' }}>{error}</p>}
       </div>
-      <button id="next-button" className='bree-serif-regular' onClick={handleNext}>
-        Next Question
+      <button id="next-button" className='bree-serif-regular' onClick={handleNext} disabled={isLoading}>
+        {isLoading ? 'Saving...' : 'Next Question'}
       </button>
     </>
   )

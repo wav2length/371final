@@ -51,6 +51,34 @@ h1#heading-login {
   margin-top: 1vh;
 }
 
+#input-firstname-login {
+  height: clamp(45px, 6vh, 65px);
+  width: 100%;
+  font-size: clamp(16px, 2vw, 22px);
+  font-family: "Bree Serif", serif;
+  color: #0B4F6C;
+  background-color: #F4A5AE;
+  border: 2px solid #A63446;
+  border-radius: 15px;
+  padding-left: 15px;
+  box-sizing: border-box;
+  margin-top: 1vh;
+}
+
+#input-lastname-login {
+  height: clamp(45px, 6vh, 65px);
+  width: 100%;
+  font-size: clamp(16px, 2vw, 22px);
+  font-family: "Bree Serif", serif;
+  color: #0B4F6C;
+  background-color: #F4A5AE;
+  border: 2px solid #A63446;
+  border-radius: 15px;
+  padding-left: 15px;
+  box-sizing: border-box;
+  margin-top: 1vh;
+}
+
 #error-text-login {
   font-size: clamp(14px, 1.8vw, 18px);
   color: #A63446;
