@@ -81,6 +81,7 @@ const NUM_RETRIES = 10
 
 // Avoids multiple simultaneous attempts at matchmaking
 let matchmaking = false;
+const MATCH_CONFIDENCE_THRESHOLD = 0.2
 
 // Finds and returns socketID for a given username of all online users
 function getSocketFromUsername(username) {
@@ -142,7 +143,7 @@ async function makeMatch() {
 
     // IMPLEMENT THE MATCHMAKING HERE BASED ON THE ALGORITHM
     // will attempt to match 10 times
-    for (let i = 0; i < NUM_RETRIES && prediction < 0.8; i++) {
+    for (let i = 0; i < NUM_RETRIES && prediction < MATCH_CONFIDENCE_THRESHOLD; i++) {
         const currQueue = Array.from(matchmaking_queue)
         let wouldDate1 = false;
         let wouldDate2 = false;
@@ -172,10 +173,11 @@ async function makeMatch() {
 
         const result = await response.json();
         prediction = result.prediction;
+        console.log(`Match made with ${prediction} confidence`)
     }
 
-    if (prediction < .8){
-        console.log(`Could not find a good match above 0.8 threshold`)
+    if (prediction < MATCH_CONFIDENCE_THRESHOLD){
+        console.log(`Could not find a good match above ${MATCH_CONFIDENCE_THRESHOLD} threshold`)
         return
     }
 
