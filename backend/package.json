@@ -3,7 +3,12 @@
   "main": "server.js",
   "scripts": {
     "start": "node .",
-    "dev": "nodemon . --ignore users_db.json"
+    "dev": "nodemon ."
+  },
+  "nodemonConfig": {
+    "watch": ["."],
+    "ignore": ["users_db.json"],
+    "ext": "js,json"
   },
   "dependencies": {
     "cors": "^2.8.6",
