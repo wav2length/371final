@@ -77,7 +77,11 @@ function Onboarding1() {
         <p id="subheading-board1">Last Name</p>
         <input value={lastName} onChange={e => {setLastName(e.target.value); setError('')}} id="input-text" type="text" placeholder="Enter your last name here..." required/>
         <p id="subheading-board1">Gender</p>
-        <input value={gender} onChange={e => setGender(e.target.value)} id="input-text" type="text" placeholder="Enter your gender here... " required/>
+        <select id="gender-dropdown" value={gender} onChange={(e) => setGender(e.target.value)}>
+          <option value="">Select...</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
         <p id="subheading-board1">Pronouns</p>
         <input value={pronouns} onChange={e => setPronouns(e.target.value)} id="input-text" type="text" placeholder="Enter your pronouns here... "/>
       </div>
