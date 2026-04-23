@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import arrowLeft from './Assets/ArrowLeft.png'
 import './Chat.css'
 import { socket } from './socket.js'
 import { useNavigate } from 'react-router-dom'
@@ -91,7 +90,7 @@ function Chat({ partner }) {
     <div id="chat-page">
       {/* Left sidebar — partner info */}
       <div id="sidebar">
-        <h2 id="sidebar-name">{partner?.username || 'Your Match'}</h2>
+        <h2 id="sidebar-name">{info ? `${info.firstName} ${info.lastName}` : 'Your Match'}</h2>
 
         <div id="sidebar-section">
           <p className="sidebar-label">Gender</p>
@@ -134,7 +133,7 @@ function Chat({ partner }) {
       {/* Right chat area */}
       <div id="chat-area">
         <div id="chat-header">
-          <h2>{partner?.username || 'Chat'}</h2>
+          <h2>{info ? `${info.firstName} ${info.lastName}` : 'Chat'}</h2>
           {/* Show a status indicator if partner has left */}
           {partnerLeft
             ? <p id="partner-status-left">Left the chat</p>
