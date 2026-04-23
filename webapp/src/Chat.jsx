@@ -28,7 +28,7 @@ function Chat({ partner }) {
       }])
     })
 
-    // Clean up listeners when component unmounts
+    // Make the sockets face the wall
     return () => {
       socket.off('receive-message')
       socket.off('partner-leave-chat')

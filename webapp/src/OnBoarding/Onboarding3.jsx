@@ -6,10 +6,50 @@ import { useNavigate } from 'react-router-dom'
 function Onboarding3() {
   const navigate = useNavigate()
   const [age, setAge] = useState(18)
+  const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(() => {
+    // Server confirmed the user object was created, wait till succesful and then proceed to onboarding2
+    socket.on('onboarding3-success', () => {
+      // No longer loading
+      setIsLoading(false)
+      // Navigate to next step
+      navigate('/onboarding4')
+    })
+
+    // Clean the listener
+    // Prevents portalling the listener to the moon
+    return () => {
+      socket.off('onboarding3-success')
+    }
+  }, [navigate])
 
   const handleNext = () => {
-    socket.emit('store-onboarding3-results', JSON.stringify(age))
-    navigate('/onboarding4')
+    // Get Age
+    const parsedAge = parseInt(age, 10)
+    
+    // Age not right
+    if (isNaN(parsedAge)) {
+      setError('Please enter a valid age.')
+      return
+    }
+
+    // Close enough
+    if (parsedAge < 18) {
+      setError('You must be at least 18 to use Wavelength.')
+      return
+    }
+
+    if (parsedAge > 120) {
+      setError('Real funny lying to the Ministry of Truth, now face the wall')
+      return
+    }
+
+    setError('')
+    // Set 
+    setIsLoading(true)
+    socket.emit('store-onboarding3-results', JSON.stringify(parsedAge))
   }
 
   return (
