@@ -98,29 +98,29 @@ const getDisplayName = (sender) => {
         <h2 id="chat-sidebar-name">{info ? `${info.firstName} ${info.lastName}` : 'Your Match'}</h2>
 
         <div id="chat-sidebar-section">
-          <p className="sidebar-label">Gender</p>
-          <p className="sidebar-value">{info?.gender || '—'}</p>
+          <p className="chat-sidebar-label">Gender</p>
+          <p className="chat-sidebar-value">{info?.gender || '—'}</p>
         </div>
 
         <div id="chat-sidebar-section">
-          <p className="sidebar-label">Pronouns</p>
-          <p className="sidebar-value">{info?.pronouns || '—'}</p>
+          <p className="chat-sidebar-label">Pronouns</p>
+          <p className="chat-sidebar-value">{info?.pronouns || '—'}</p>
         </div>
 
         <div id="chat-sidebar-section">
-          <p className="sidebar-label">Career</p>
-          <p className="sidebar-value">{getCareer(info)}</p>
+          <p className="chat-sidebar-label">Career</p>
+          <p className="chat-sidebar-value">{getCareer(info)}</p>
         </div>
 
         <div id="chat-sidebar-section">
-          <p className="sidebar-label">Top Interests</p>
+          <p className="chat-sidebar-label">Top Interests</p>
           {topInterests.length > 0
             ? topInterests.map(interest => (
-                <p key={interest.name} className="sidebar-value">
+                <p key={interest.name} className="chat-sidebar-value">
                   {interest.name} — {'★'.repeat(interest.score)}{'☆'.repeat(5 - interest.score)}
                 </p>
               ))
-            : <p className="sidebar-value">—</p>
+            : <p className="chat-sidebar-value">—</p>
           }
         </div>
 
@@ -146,13 +146,13 @@ const getDisplayName = (sender) => {
             // System messages like "partner left" get their own style
             msg.isSystem
               ? <p key={i} id="chat-system-message">{msg.content}</p>
-              : <div key={i} className={`message ${msg.sender === 'You' ? 'mine' : 'theirs'}`}>
-                  <div className="avatar">
+              : <div key={i} className={`chat-message ${msg.sender === 'You' ? 'mine' : 'theirs'}`}>
+                  <div className="chat-avatar">
                     {msg.sender.split(' ').map(n => n[0]).join('')}
                   </div>
                   <div>
-                    <p className="sender-name">{getDisplayName(msg.sender)}</p>
-                    <p className="message-content">{msg.content}</p>
+                    <p className="chat-sender-name">{getDisplayName(msg.sender)}</p>
+                    <p className="chat-message-content">{msg.content}</p>
                   </div>
                 </div>
           ))}

@@ -46,7 +46,7 @@ h1#career-Heading {
   padding: clamp(10px, 2vw, 20px);
 }
 
-.field-btn {
+.career-field-btn {
   height: clamp(55px, 7vh, 80px);
   width: clamp(160px, 20vw, 280px);
   font-size: clamp(14px, 2vw, 24px);
@@ -58,7 +58,7 @@ h1#career-Heading {
   cursor: pointer;
 }
 
-.field-btn.selected {
+.career-field-btn.selected {
   background-color: #A63446;
   color: #C2DFE3;
 }

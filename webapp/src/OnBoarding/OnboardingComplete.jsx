@@ -24,7 +24,7 @@ function OnboardingComplete() {
       <div id="onboardingComp-home-page">
         <h1 id="onboardingComp-Heading-complete">Onboarding</h1>
         <h1 id="onboardingComp-Heading-complete">Complete!</h1>
-        <button id='next-button' onClick={handleNext}>
+        <button id='onboardingComp-next-button' onClick={handleNext}>
           FIND YOUR WAVE
         </button>
         <img id="onboardingComp-waves" src={waves} alt="Waves" />
