@@ -10,7 +10,7 @@ import {
     add_user_join_reason,
     complete_user_onboarding
 } from './user.js'
-import { load_db, save_db, save_user, log_user_in } from './user_database.js'
+import { load_db, save_db, save_user, log_user_in, get_usernames } from './user_database.js'
 // import { socket } from '../webapp/src/socket.js'
 
 
@@ -81,6 +81,7 @@ const NUM_RETRIES = 10
 
 // Avoids multiple simultaneous attempts at matchmaking
 let matchmaking = false;
+const MATCH_CONFIDENCE_THRESHOLD = 0.2
 
 // Finds and returns socketID for a given username of all online users
 function getSocketFromUsername(username) {
@@ -142,7 +143,7 @@ async function makeMatch() {
 
     // IMPLEMENT THE MATCHMAKING HERE BASED ON THE ALGORITHM
     // will attempt to match 10 times
-    for (let i = 0; i < NUM_RETRIES && prediction < 0.8; i++) {
+    for (let i = 0; i < NUM_RETRIES && prediction < MATCH_CONFIDENCE_THRESHOLD; i++) {
         const currQueue = Array.from(matchmaking_queue)
         let wouldDate1 = false;
         let wouldDate2 = false;
@@ -172,10 +173,11 @@ async function makeMatch() {
 
         const result = await response.json();
         prediction = result.prediction;
+        console.log(`Match made with ${prediction} confidence`)
     }
 
-    if (prediction < .8){
-        console.log(`Could not find a good match above 0.8 threshold`)
+    if (prediction < MATCH_CONFIDENCE_THRESHOLD){
+        console.log(`Could not find a good match above ${MATCH_CONFIDENCE_THRESHOLD} threshold`)
         return
     }
 
@@ -225,6 +227,13 @@ async function enterMatchMaking(socket, username) {
     // Update client with status
     socket.emit('enter-matchmaking-successful')
 
+    // Mock some people in the queue (dev only)
+    if (true) {
+        for (let i = 0; i < 1; i++) {
+            mockUser()
+        }
+    }
+
     // Logging
     console.log(`${username} entered matchmaking queue`)
     console.log(`Matchmaking queue size: ${matchmaking_queue.size}`)
@@ -243,6 +252,26 @@ async function enterMatchMaking(socket, username) {
         console.log(`Matchmaking failed for ${username}`)
         socket.emit('matchmaking-failure') // ALONE FOREVER ONCE AGAIN :L
     }
+}
+
+function mockUser() {
+    const users = get_usernames()
+    const inactiveUsers = users.filter(username => !matchmaking_queue.has(username))
+    const randomUsername = inactiveUsers[Math.floor(Math.random() * inactiveUsers.length)]
+    const existingUser = log_user_in(JSON.stringify(randomUsername))
+
+    if(!existingUser){
+        console.warn(`Failed log in for ${randomUsername}`)
+        return
+    }
+
+    // Load user from memory
+    users_online.set(Math.floor(Math.random() * 1000000000), randomUsername);
+    user_profiles.set(randomUsername, existingUser)
+
+    // Enter matchmaking
+    matchmaking_queue.add(randomUsername)
+    console.log(`${randomUsername} entered matchmaking queue`)
 }
 
 //
