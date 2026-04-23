@@ -36,21 +36,21 @@ function Onboarding2() {
 
   return (
     <>
-    <div id="onboarding2_progress-container">
-        <div id="onboarding2_progress-bar-board2"></div>
+    <div id="onboarding2-progress-container">
+        <div id="onboarding2-progress-bar-board2"></div>
     </div>
-      <div id="onboarding2_main-area">
-        <h1 id="onboarding2_Heading-board2">Tell Us About Yourself</h1>
-        <h2 id="onboarding2_subheading-board2">What gender are you attracted to?</h2>
-        <div id="onboarding2_options-container">
+      <div id="onboarding2-main-area">
+        <h1 id="onboarding2-Heading-board2">Tell Us About Yourself</h1>
+        <h2 id="onboarding2-subheading-board2">What gender are you attracted to?</h2>
+        <div id="onboarding2-options-container">
              <button id={selected === 'female' ? 'clicked-option' : 'unclicked-option'}
                 onClick={() => { setSelected('female'); setError('') }}>
-                Yes, female
+                Female
             </button>
 
             <button id={selected === 'male' ? 'clicked-option' : 'unclicked-option'}
                 onClick={() => { setSelected('male'); setError('') }}>
-                Yes, male
+                Male
             </button>
             <button id={selected === 'no-preference' ? 'clicked-option' : 'unclicked-option'}
                 onClick={() => { setSelected('no-preference'); setError('') }}>
@@ -59,7 +59,7 @@ function Onboarding2() {
         </div>
         {error && <p style={{ color: 'red', marginTop: '12px', fontSize: '0.85rem' }}>{error}</p>}
       </div>
-      <button id="onboarding2_next-button" className='bree-serif-regular' onClick={handleNext}>Next Question</button>
+      <button id="onboarding2-next-button" className='bree-serif-regular' onClick={handleNext}>Next Question</button>
     </>
   )
 }

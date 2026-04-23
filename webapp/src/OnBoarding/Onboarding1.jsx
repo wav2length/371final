@@ -70,23 +70,23 @@ function Onboarding1() {
     <div id="progress-container">
         <div id="progress-bar-board1"></div>
     </div>
-      <div id="onboarding1_main-area">
-        <h1 id="onboarding1_Heading-board1">Tell Us About Yourself</h1>
-        <p id="onboarding1_subheading-board1">First Name</p>
+      <div id="onboarding1-main-area">
+        <h1 id="onboarding1-Heading-board1">Tell Us About Yourself</h1>
+        <p id="onboarding1-subheading-board1">First Name</p>
         <input value={firstName} onChange={e => {setFirstName(e.target.value); setError('')}} id="input-text" type="text" placeholder="Enter your first name here..." required/>
-        <p id="onboarding1_subheading-board1">Last Name</p>
+        <p id="onboarding1-subheading-board1">Last Name</p>
         <input value={lastName} onChange={e => {setLastName(e.target.value); setError('')}} id="input-text" type="text" placeholder="Enter your last name here..." required/>
-        <p id="onboarding1_subheading-board1">Gender</p>
+        <p id="onboarding1-subheading-board1">Gender</p>
         <select id="gender-dropdown" value={gender} onChange={(e) => setGender(e.target.value)}>
           <option value="">Select...</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
         </select>
-        <p id="onboarding1_subheading-board1">Pronouns</p>
+        <p id="onboarding1-subheading-board1">Pronouns</p>
         <input value={pronouns} onChange={e => setPronouns(e.target.value)} id="input-text" type="text" placeholder="Enter your pronouns here... "/>
       </div>
       {error && <p style={{ color: 'red', fontSize: '0.85rem' }}>{error}</p>}
-      <button id="onboarding1_next-button" className='bree-serif-regular' onClick={handleNext} disabled={isLoading}>
+      <button id="onboarding1-next-button" className='bree-serif-regular' onClick={handleNext} disabled={isLoading}>
         {isLoading ? 'Saving...' : 'Next Question'}
       </button>
     </>

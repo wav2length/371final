@@ -74,16 +74,16 @@ function Survey() {
 
   return (
     <>
-    <div id="progress-container">
-        <div id="progress-bar-survey1"></div>
+    <div id="survey-progress-container">
+        <div id="survey-progress-bar"></div>
     </div>
-      <div id="main-area">
-        <h1 id="Heading-survey1">How interested are you in:</h1>
-        <h1 id="Heading-survey1">{surveyTopics[questionIdx]}</h1>
+      <div id="survey-main-area">
+        <h1 id="survey-Heading">How interested are you in:</h1>
+        <h1 id="survey-Heading">{surveyTopics[questionIdx]}</h1>
         <RatingComponent selected={selectedRating} setSelected={ rating => {setSelectedRating(rating); setError('') }}/>
         {error && <p style={{ color: 'red', marginTop: '12px', fontSize: '0.85rem' }}>{error}</p>}
       </div>
-      <button id="next-button" className='bree-serif-regular' onClick={handleNext} disabled={isLoading}>
+      <button id="survey-next-button" className='bree-serif-regular' onClick={handleNext} disabled={isLoading}>
         {isLoading ? 'Saving...' : (questionIdx >= surveyTopics.length - 1) ? 'Finish' : 'Next Question'}
       </button>
     </>

@@ -94,25 +94,25 @@ const getDisplayName = (sender) => {
   return (
     <div id="chat-page">
       {/* Left sidebar — partner info */}
-      <div id="sidebar">
-        <h2 id="sidebar-name">{info ? `${info.firstName} ${info.lastName}` : 'Your Match'}</h2>
+      <div id="chat-sidebar">
+        <h2 id="chat-sidebar-name">{info ? `${info.firstName} ${info.lastName}` : 'Your Match'}</h2>
 
-        <div id="sidebar-section">
+        <div id="chat-sidebar-section">
           <p className="sidebar-label">Gender</p>
           <p className="sidebar-value">{info?.gender || '—'}</p>
         </div>
 
-        <div id="sidebar-section">
+        <div id="chat-sidebar-section">
           <p className="sidebar-label">Pronouns</p>
           <p className="sidebar-value">{info?.pronouns || '—'}</p>
         </div>
 
-        <div id="sidebar-section">
+        <div id="chat-sidebar-section">
           <p className="sidebar-label">Career</p>
           <p className="sidebar-value">{getCareer(info)}</p>
         </div>
 
-        <div id="sidebar-section">
+        <div id="chat-sidebar-section">
           <p className="sidebar-label">Top Interests</p>
           {topInterests.length > 0
             ? topInterests.map(interest => (
@@ -125,27 +125,27 @@ const getDisplayName = (sender) => {
         </div>
 
         {/* Leave chat button in sidebar so it's always visible */}
-        <button id="leave-button" onClick={handleLeaveChat}>
+        <button id="chat-leave-button" onClick={handleLeaveChat}>
           Leave Chat
         </button>
       </div>
 
       {/* Right chat area */}
-      <div id="chat-area">
-        <div id="chat-header">
+      <div id="chat-chat-area">
+        <div id="chat-chat-header">
           <h2>{info ? `${info.firstName} ${info.lastName}` : 'Chat'}</h2>
           {/* Show a status indicator if partner has left */}
           {partnerLeft
-            ? <p id="partner-status-left">Left the chat</p>
-            : <p id="partner-status-active">Active</p>
+            ? <p id="chat-partner-status-left">Left the chat</p>
+            : <p id="chat-partner-status-active">Active</p>
           }
         </div>
 
-        <div id="messages-list">
+        <div id="chat-messages-list">
           {messages.map((msg, i) => (
             // System messages like "partner left" get their own style
             msg.isSystem
-              ? <p key={i} id="system-message">{msg.content}</p>
+              ? <p key={i} id="chat-system-message">{msg.content}</p>
               : <div key={i} className={`message ${msg.sender === 'You' ? 'mine' : 'theirs'}`}>
                   <div className="avatar">
                     {msg.sender.split(' ').map(n => n[0]).join('')}
@@ -158,9 +158,9 @@ const getDisplayName = (sender) => {
           ))}
         </div>
 
-        <div id="input-area">
+        <div id="chat-input-area">
           <input
-            id="message-input"
+            id="chat-message-input"
             type="text"
             placeholder={partnerLeft ? 'Your match has left the chat...' : 'Write a message...'}
             value={input}
@@ -169,7 +169,7 @@ const getDisplayName = (sender) => {
             // Disable input if partner has left so user knows they can't message anymore
             disabled={partnerLeft}
           />
-          <button id="send-button" onClick={handleSend} disabled={partnerLeft}>➤</button>
+          <button id="chat-send-button" onClick={handleSend} disabled={partnerLeft}>➤</button>
         </div>
       </div>
     </div>

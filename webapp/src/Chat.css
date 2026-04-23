@@ -16,7 +16,7 @@ body {
   left: 0;
 }
 
-#sidebar {
+#chat-sidebar {
   width: clamp(200px, 20vw, 280px);
   background-color: #0B4F6C;
   padding: clamp(10px, 2vw, 20px);
@@ -27,7 +27,7 @@ body {
   font-family: "Bree Serif", serif;
 }
 
-#sidebar-name {
+#chat-sidebar-name {
   font-size: clamp(18px, 2.5vw, 26px);
   color: #C2DFE3;
   padding-bottom: 1vh;
@@ -35,7 +35,7 @@ body {
   margin-bottom: 1vh;
 }
 
-#sidebar-section {
+#chat-sidebar-section {
   border-bottom: 1px solid rgba(194, 223, 227, 0.3);
   padding: clamp(6px, 1vh, 12px) 0;
 }
@@ -76,7 +76,7 @@ body {
   font-size: clamp(18px, 2.5vw, 28px);
 }
 
-#info-button {
+#chat-info-button {
   background-color: #A63446;
   color: #C2DFE3;
   border: none;
@@ -87,7 +87,7 @@ body {
   cursor: pointer;
 }
 
-#messages-list {
+#chat-messages-list {
   flex: 1;
   overflow-y: auto;
   display: flex;
@@ -137,13 +137,13 @@ body {
   color: #0B4F6C;
 }
 
-#input-area {
+#chat-input-area {
   display: flex;
   gap: clamp(6px, 1vw, 10px);
   margin-top: clamp(8px, 1.5vh, 15px);
 }
 
-#message-input {
+#chat-message-input {
   flex: 1;
   height: clamp(40px, 5vh, 50px);
   border-radius: 10px;
@@ -155,7 +155,7 @@ body {
   color: #0B4F6C;
 }
 
-#send-button {
+#chat-send-button {
   width: clamp(45px, 5vw, 60px);
   height: clamp(40px, 5vh, 50px);
   background-color: #179EB1;
@@ -166,7 +166,7 @@ body {
   cursor: pointer;
 }
 
-#leave-button {
+#chat-leave-button {
   margin-top: auto;
   height: clamp(40px, 5vh, 55px);
   width: 100%;
@@ -179,19 +179,19 @@ body {
   cursor: pointer;
 }
 
-#partner-status-active {
+#chat-partner-status-active {
   font-size: clamp(12px, 1.2vw, 14px);
   font-family: "Bree Serif", serif;
   color: #179EB1;
 }
 
-#partner-status-left {
+#chat-partner-status-left {
   font-size: clamp(12px, 1.2vw, 14px);
   font-family: "Bree Serif", serif;
   color: #A63446;
 }
 
-#system-message {
+#chat-system-message {
   text-align: center;
   font-size: clamp(12px, 1.2vw, 14px);
   font-family: "Bree Serif", serif;
@@ -200,12 +200,12 @@ body {
   padding: 4px 0;
 }
 
-#message-input:disabled {
+#chat-message-input:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-#send-button:disabled {
+#chat-send-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }

@@ -47,12 +47,12 @@ const handleClick = (field) => {
 
   return (
     <>
-    <div id="progress-container-career">
-        <div id="progress-bar-career"></div>
+    <div id="career-progress-container">
+        <div id="career-progress-bar"></div>
     </div>
-      <div id="main-area-career">
-        <h1 id="Heading-career">What Field is your career in?</h1>
-        <div id="fields-container">
+      <div id="career-main-area">
+        <h1 id="career-Heading">What Field is your career in?</h1>
+        <div id="career-fields">
         {fields.map((field) => (
             <button
             key={field}
@@ -65,7 +65,7 @@ const handleClick = (field) => {
         </div>
         {error && <p style={{ color: 'red', marginTop: '12px', fontSize: '0.85rem' }}>{error}</p>}
       </div>
-      <button id="next-button-career" className='bree-serif-regular' onClick={handleNext} disabled={isLoading}>
+      <button id="career-next-button" className='bree-serif-regular' onClick={handleNext} disabled={isLoading}>
         {isLoading ? 'Saving...' : 'Next Question'}
       </button>
     </>
