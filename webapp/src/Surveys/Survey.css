@@ -97,3 +97,22 @@ h1#survey-Heading {
   border-radius: 50px;
 }
 
+#survey-next-button:hover {
+  background-color: #8a2a3a;
+  border-color: #8a2a3a;
+}
+
+#survey-next-button:active {
+  background-color: #6e2230;
+  border-color: #6e2230;
+  transform: scale(0.97);
+}
+
+.survey-unclicked-option:hover {
+  background-color: #e8909a;
+}
+
+.survey-unclicked-option:active {
+  background-color: #d4757f;
+  transform: scale(0.97);
+}
