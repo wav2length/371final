@@ -13,7 +13,7 @@ function Chat({ partner }) {
   useEffect(() => {
     // Listen for incoming messages from the partner
     socket.on('receive-message', message => {
-      setMessages(prev => [...prev, message])
+      setMessages(prev => [...prev, {...message, sender: partner?.username || 'Partner'}])
     })
 
     // Partner left — show an in-chat notice rather than a jarring alert
@@ -55,7 +55,7 @@ function Chat({ partner }) {
     // Notify the server that this user is leaving
     // Server will then notify the partner via 'partner-leave-chat'
     socket.emit('leave-chat')
-    navigate('/matches')
+    navigate('/')
   }
 
   // Pull the career field name from the partner info object
@@ -74,14 +74,15 @@ function Chat({ partner }) {
 
   // Pull interest names where rating is above 3 stars
   const getTopInterests = (info) => {
-    if (!info) return []
-    const interestKeys = ['sports', 'tvsports', 'exercise', 'dining', 'museums',
-      'art', 'hiking', 'gaming', 'clubbing', 'reading', 'tv',
-      'theater', 'movies', 'concerts', 'music', 'shopping', 'yoga']
-    return interestKeys
-      .filter(k => info[k] >= 6) // ratings are doubled so 6 = 3/5 stars
-      .map(k => k.charAt(0).toUpperCase() + k.slice(1))
-  }
+  if (!info) return []
+  const interestKeys = ['sports', 'tvsports', 'exercise', 'dining', 'museums',
+    'art', 'hiking', 'gaming', 'clubbing', 'reading', 'tv',
+    'theater', 'movies', 'concerts', 'music', 'shopping', 'yoga']
+  return interestKeys.filter(k => info[k] >= 6).map(k => ({
+      name: k.charAt(0).toUpperCase() + k.slice(1),
+      score: info[k] / 2  // convert back from 1-10 DB scale to 1-5 stars
+    }))
+}
 
   const info = partner?.info
   const topInterests = getTopInterests(info)
@@ -111,7 +112,9 @@ function Chat({ partner }) {
           <p className="sidebar-label">Top Interests</p>
           {topInterests.length > 0
             ? topInterests.map(interest => (
-                <p key={interest} className="sidebar-value">{interest}</p>
+                <p key={interest.name} className="sidebar-value">
+                  {interest.name} — {'★'.repeat(interest.score)}{'☆'.repeat(5 - interest.score)}
+                </p>
               ))
             : <p className="sidebar-value">—</p>
           }
