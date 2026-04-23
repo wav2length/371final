@@ -46,10 +46,10 @@ h1#onboarding4-Heading-career {
   padding: clamp(10px, 2vw, 20px);
 }
 
-.field-btn {
+.field-btn-onboarding {
   height: clamp(55px, 7vh, 80px);
   width: clamp(160px, 20vw, 280px);
-  font-size: clamp(14px, 2vw, 24px);
+  font-size: clamp(14px, 2vw, 20px);
   font-family: "Bree Serif", serif;
   background-color: #F4A5AE;
   color: #0B4F6C;
@@ -58,7 +58,7 @@ h1#onboarding4-Heading-career {
   cursor: pointer;
 }
 
-.field-btn.selected {
+.field-btn-onboarding.selected {
   background-color: #A63446;
   color: #C2DFE3;
 }
