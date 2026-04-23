@@ -13,6 +13,8 @@ import {
 import { load_db, save_db, save_user, log_user_in, get_usernames } from './user_database.js'
 // import { socket } from '../webapp/src/socket.js'
 
+const MOCK_MATCHMAKING = false;
+const NUM_MOCKS = 1;
 
 //
 //
@@ -228,8 +230,8 @@ async function enterMatchMaking(socket, username) {
     socket.emit('enter-matchmaking-successful')
 
     // Mock some people in the queue (dev only)
-    if (true) {
-        for (let i = 0; i < 1; i++) {
+    if (MOCK_MATCHMAKING) {
+        for (let i = 0; i < NUM_MOCKS; i++) {
             mockUser()
         }
     }
