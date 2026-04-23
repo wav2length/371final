@@ -18,16 +18,16 @@ function OnboardingComplete() {
   }  
   return (
     <>
-      <div id="progress-container">
-        <div id="progress-bar-complete"></div>
+      <div id="onboardingComp-progress-container">
+        <div id="onboardingComp-progress-bar-complete"></div>
         </div>
-      <div id="home-page">
-        <h1 id="Heading-complete">Onboarding</h1>
-        <h1 id="Heading-complete">Complete!</h1>
+      <div id="onboardingComp-home-page">
+        <h1 id="onboardingComp-Heading-complete">Onboarding</h1>
+        <h1 id="onboardingComp-Heading-complete">Complete!</h1>
         <button id='next-button' onClick={handleNext}>
           FIND YOUR WAVE
         </button>
-        <img id="waves" src={waves} alt="Waves" />
+        <img id="onboardingComp-waves" src={waves} alt="Waves" />
       </div>
     </>
   )

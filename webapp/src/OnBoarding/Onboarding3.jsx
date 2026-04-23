@@ -55,14 +55,14 @@ function Onboarding3() {
 
   return (
     <>
-    <div id="progress-container">
-        <div id="progress-bar-board3"></div>
+    <div id="onboarding3-progress-container">
+        <div id="onboarding3-progress-bar-board3"></div>
     </div>
-      <div id="main-area">
-        <h1 id="Heading-board3">Tell Us About Yourself</h1>
-        <h2 id="subheading-board3">How old are you?</h2>
-        <div id="options-container">
-            <input id="input-num" type="number" min="18" max="120" value={age} onChange={(e) => { setAge(e.target.value); setError('') }}
+      <div id="onboarding3-main-area">
+        <h1 id="onboarding3-Heading-board3">Tell Us About Yourself</h1>
+        <h2 id="onboarding3-subheading-board3">How old are you?</h2>
+        <div id="onboarding3-options-container">
+            <input id="onboarding3-input-num" type="number" min="18" max="120" value={age} onChange={(e) => { setAge(e.target.value); setError('') }}
               onBlur={() => {
               const parsed = parseInt(age, 10)
               if (isNaN(parsed) || parsed < 18) setAge(18)
@@ -72,7 +72,7 @@ function Onboarding3() {
         </div>
         {error && <p style={{ color: 'red', marginTop: '12px', fontSize: '0.85rem' }}>{error}</p>}
       </div>
-      <button id="next-button" className='bree-serif-regular' onClick={handleNext} disabled={isLoading}>
+      <button id="onboarding3-next-button" className='bree-serif-regular' onClick={handleNext} disabled={isLoading}>
         {isLoading ? 'Saving...' : 'Next Question'}
       </button>
     </>

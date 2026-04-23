@@ -36,13 +36,13 @@ function Onboarding2() {
 
   return (
     <>
-    <div id="progress-container">
-        <div id="progress-bar-board2"></div>
+    <div id="onboarding2_progress-container">
+        <div id="onboarding2_progress-bar-board2"></div>
     </div>
-      <div id="main-area">
-        <h1 id="Heading-board2">Tell Us About Yourself</h1>
-        <h2 id="subheading-board2">What gender are you attracted to?</h2>
-        <div id="options-container">
+      <div id="onboarding2_main-area">
+        <h1 id="onboarding2_Heading-board2">Tell Us About Yourself</h1>
+        <h2 id="onboarding2_subheading-board2">What gender are you attracted to?</h2>
+        <div id="onboarding2_options-container">
              <button id={selected === 'female' ? 'clicked-option' : 'unclicked-option'}
                 onClick={() => { setSelected('female'); setError('') }}>
                 Yes, female
@@ -59,7 +59,7 @@ function Onboarding2() {
         </div>
         {error && <p style={{ color: 'red', marginTop: '12px', fontSize: '0.85rem' }}>{error}</p>}
       </div>
-      <button id="next-button" className='bree-serif-regular' onClick={handleNext}>Next Question</button>
+      <button id="onboarding2_next-button" className='bree-serif-regular' onClick={handleNext}>Next Question</button>
     </>
   )
 }
