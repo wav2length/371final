@@ -120,11 +120,6 @@ function Chat({ partner }) {
           }
         </div>
 
-        <div id="sidebar-section">
-          <p className="sidebar-label">Gender Preference</p>
-          <p className="sidebar-value">{info?.genderPreference || '—'}</p>
-        </div>
-
         {/* Leave chat button in sidebar so it's always visible */}
         <button id="leave-button" onClick={handleLeaveChat}>
           Leave Chat

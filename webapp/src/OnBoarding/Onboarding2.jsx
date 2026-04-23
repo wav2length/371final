@@ -41,7 +41,7 @@ function Onboarding2() {
     </div>
       <div id="main-area">
         <h1 id="Heading-board2">Tell Us About Yourself</h1>
-        <h2 id="subheading-board2">Do you have a gender preference?</h2>
+        <h2 id="subheading-board2">What gender are you attracted to?</h2>
         <div id="options-container">
              <button id={selected === 'female' ? 'clicked-option' : 'unclicked-option'}
                 onClick={() => { setSelected('female'); setError('') }}>
