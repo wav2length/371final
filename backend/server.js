@@ -11,10 +11,16 @@ import {
     complete_user_onboarding
 } from './user.js'
 import { load_db, save_db, save_user, log_user_in, get_usernames } from './user_database.js'
-// import { socket } from '../webapp/src/socket.js'
 
 const MOCK_MATCHMAKING = false;
 const NUM_MOCKS = 1;
+
+// PROGRESS_TIMEOUT * NUM_RETRIES = max amount of time spent in queue before failing
+const PROGRESS_TIMEOUT = 3000 // millis
+// Maximum number of retries before bailing on finding a match (YOU WILL BE ALONE FOREVER :3)
+const NUM_RETRIES = 10
+
+const MATCH_CONFIDENCE_THRESHOLD = 0.2
 
 //
 //
@@ -75,15 +81,8 @@ const chat_links = new Map();
 //
 //
 
-// PROGRESS_TIMEOUT * NUM_RETIRES = max amount of time spent in queue before failing
-const PROGRESS_TIMEOUT = 3000 // millis
-
-// Maximum number of retry's before bailing on finding a match (YOU WILL BE ALONE FOREVER :3)
-const NUM_RETRIES = 10
-
 // Avoids multiple simultaneous attempts at matchmaking
 let matchmaking = false;
-const MATCH_CONFIDENCE_THRESHOLD = 0.2
 
 // Finds and returns socketID for a given username of all online users
 function getSocketFromUsername(username) {
@@ -143,7 +142,6 @@ async function makeMatch() {
     if (!partner1 || !partner2)
         return
 
-    // IMPLEMENT THE MATCHMAKING HERE BASED ON THE ALGORITHM
     // will attempt to match 10 times
     for (let i = 0; i < NUM_RETRIES && prediction < MATCH_CONFIDENCE_THRESHOLD; i++) {
         const currQueue = Array.from(matchmaking_queue)
@@ -224,17 +222,18 @@ async function enterMatchMaking(socket, username) {
         return
     }
 
-    // User is not in matchmaking_queue already, add user to queue
-    matchmaking_queue.add(username)
-    // Update client with status
-    socket.emit('enter-matchmaking-successful')
-
     // Mock some people in the queue (dev only)
     if (MOCK_MATCHMAKING) {
+        matchmaking_queue.clear()
         for (let i = 0; i < NUM_MOCKS; i++) {
             mockUser()
         }
     }
+
+    // User is not in matchmaking_queue already, add user to queue
+    matchmaking_queue.add(username)
+    // Update client with status
+    socket.emit('enter-matchmaking-successful')
 
     // Logging
     console.log(`${username} entered matchmaking queue`)
@@ -503,49 +502,3 @@ io.on('connection', socket => {
         console.log(`User ${socket.id} disconnected`);
     });
 });
-
-
-
-/* DECOMISSIONED ZONE OF RETAINMENT
-socket.on('enter-matchmaking', async () => {
-        const username = users_online.get(socket.id);
-        if (matchmaking_queue.has(username)) {
-            if (chat_links.has(username)) {
-                const partner = { // I'm writing so much spaghetti rn maybe it gets fixed maybe it won't who knows
-                    username: chat_links.get(username),
-                    info: survey_responses.get(chat_links.get(username))
-                };
-                matchmaking_queue.delete(username);
-                socket.emit('enter-chat', partner);
-                // might need to enter chat for other user too? nahhh
-                return;
-            }
-        } else {
-            matchmaking_queue.add(username);
-        }
-        // failure is not an option
-        socket.emit('enter-matchmaking-success');
-        for (let i = 0; i < NUM_RETRIES && matchmaking_queue.has(username); i++) {
-            console.log(`Current iteration: ${i} of ${NUM_RETRIES}`)
-            let progress = await checkForUpdates(username);
-            socket.emit('matchmaking-progress', progress);
-        }
-        matchmaking_queue.delete(username);
-        if (chat_links.has(username)) {
-            const partner = {
-                username: chat_links.get(username),
-                info: survey_responses.get(chat_links.get(username))
-            };
-            socket.emit('enter-chat', partner);
-        } else {
-            socket.emit("matchmaking-failure");
-        }
-    });
-
-
-    
-    socket.on('store-survey-results', results => {
-        survey_responses.set(users_online.get(socket.id), JSON.parse(results))
-        return;
-    });
-*/
